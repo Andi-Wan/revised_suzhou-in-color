@@ -1,0 +1,26 @@
+[
+  {
+    "id": "landscape",
+    "code": "01",
+    "name": "Natural Landscape and Atmosphere",
+    "nameZh": "自然景观与环境"
+  },
+  {
+    "id": "architecture",
+    "code": "02",
+    "name": "Architecture and Material Surfaces",
+    "nameZh": "建筑与材质"
+  },
+  {
+    "id": "people",
+    "code": "03",
+    "name": "People, Dress, and Embodied Life",
+    "nameZh": "人物、服饰与身体生活"
+  },
+  {
+    "id": "objects",
+    "code": "04",
+    "name": "Objects and Visual Communication",
+    "nameZh": "物件与视觉传播"
+  }
+]

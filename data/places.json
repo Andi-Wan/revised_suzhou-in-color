@@ -1,0 +1,287 @@
+[
+  {
+    "id": "jinxi",
+    "name": "Jinxi",
+    "nameZh": "锦溪",
+    "region": "Suzhou, Jiangsu",
+    "photoCount": 10,
+    "description": "Preview dataset built from the uploaded photograph sample. Place description pending source documentation.",
+    "coordinates": [
+      31.176,
+      120.904
+    ],
+    "representativeImage": "images/jinxi/01.jpg",
+    "recordedPalette": [
+      {
+        "hex": "#1b201f",
+        "proportion": 0.2
+      },
+      {
+        "hex": "#373d3b",
+        "proportion": 0.194
+      },
+      {
+        "hex": "#7f8683",
+        "proportion": 0.181
+      },
+      {
+        "hex": "#fafcfb",
+        "proportion": 0.155
+      },
+      {
+        "hex": "#56443e",
+        "proportion": 0.148
+      },
+      {
+        "hex": "#d5dddf",
+        "proportion": 0.122
+      }
+    ],
+    "similarity": [
+      {
+        "placeId": "hongkong",
+        "score": 56
+      },
+      {
+        "placeId": "genie",
+        "score": 52
+      },
+      {
+        "placeId": "luoyang",
+        "score": 46
+      },
+      {
+        "placeId": "bacheng",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "id": "bacheng",
+    "name": "Bacheng",
+    "nameZh": "巴城",
+    "region": "Suzhou, Jiangsu",
+    "photoCount": 10,
+    "description": "Preview dataset built from the uploaded photograph sample. Place description pending source documentation.",
+    "coordinates": [
+      31.449,
+      120.879
+    ],
+    "representativeImage": "images/bacheng/01.jpg",
+    "recordedPalette": [
+      {
+        "hex": "#83837a",
+        "proportion": 0.243
+      },
+      {
+        "hex": "#43463a",
+        "proportion": 0.232
+      },
+      {
+        "hex": "#c0cfdf",
+        "proportion": 0.142
+      },
+      {
+        "hex": "#b8b5b2",
+        "proportion": 0.134
+      },
+      {
+        "hex": "#e2ddd7",
+        "proportion": 0.126
+      },
+      {
+        "hex": "#9baab3",
+        "proportion": 0.123
+      }
+    ],
+    "similarity": [
+      {
+        "placeId": "luoyang",
+        "score": 73
+      },
+      {
+        "placeId": "genie",
+        "score": 53
+      },
+      {
+        "placeId": "jinxi",
+        "score": 40
+      },
+      {
+        "placeId": "hongkong",
+        "score": 29
+      }
+    ]
+  },
+  {
+    "id": "hongkong",
+    "name": "Hong Kong",
+    "nameZh": "香港",
+    "region": "Hong Kong SAR",
+    "photoCount": 10,
+    "description": "Preview dataset built from the uploaded photograph sample. Place description pending source documentation.",
+    "coordinates": [
+      22.319,
+      114.169
+    ],
+    "representativeImage": "images/hongkong/01.jpg",
+    "recordedPalette": [
+      {
+        "hex": "#110f0f",
+        "proportion": 0.27
+      },
+      {
+        "hex": "#432d29",
+        "proportion": 0.203
+      },
+      {
+        "hex": "#8c8c8a",
+        "proportion": 0.149
+      },
+      {
+        "hex": "#515252",
+        "proportion": 0.136
+      },
+      {
+        "hex": "#7a675e",
+        "proportion": 0.131
+      },
+      {
+        "hex": "#b7b4b3",
+        "proportion": 0.111
+      }
+    ],
+    "similarity": [
+      {
+        "placeId": "jinxi",
+        "score": 56
+      },
+      {
+        "placeId": "genie",
+        "score": 49
+      },
+      {
+        "placeId": "bacheng",
+        "score": 29
+      },
+      {
+        "placeId": "luoyang",
+        "score": 28
+      }
+    ]
+  },
+  {
+    "id": "genie",
+    "name": "Genie Town",
+    "nameZh": "格聂镇",
+    "region": "Western Sichuan",
+    "photoCount": 10,
+    "description": "Preview dataset built from the uploaded photograph sample. Place description pending source documentation.",
+    "coordinates": [
+      29.75,
+      99.79
+    ],
+    "representativeImage": "images/genie/01.jpg",
+    "recordedPalette": [
+      {
+        "hex": "#575a4e",
+        "proportion": 0.257
+      },
+      {
+        "hex": "#2f2c25",
+        "proportion": 0.241
+      },
+      {
+        "hex": "#99a2a1",
+        "proportion": 0.144
+      },
+      {
+        "hex": "#86866e",
+        "proportion": 0.136
+      },
+      {
+        "hex": "#bed0e1",
+        "proportion": 0.129
+      },
+      {
+        "hex": "#677b71",
+        "proportion": 0.093
+      }
+    ],
+    "similarity": [
+      {
+        "placeId": "bacheng",
+        "score": 53
+      },
+      {
+        "placeId": "luoyang",
+        "score": 53
+      },
+      {
+        "placeId": "jinxi",
+        "score": 52
+      },
+      {
+        "placeId": "hongkong",
+        "score": 49
+      }
+    ]
+  },
+  {
+    "id": "luoyang",
+    "name": "Luoyang",
+    "nameZh": "洛阳",
+    "region": "Henan",
+    "photoCount": 10,
+    "description": "Preview dataset built from the uploaded photograph sample. Place description pending source documentation.",
+    "coordinates": [
+      34.619,
+      112.454
+    ],
+    "representativeImage": "images/luoyang/01.jpg",
+    "recordedPalette": [
+      {
+        "hex": "#766865",
+        "proportion": 0.238
+      },
+      {
+        "hex": "#47474c",
+        "proportion": 0.214
+      },
+      {
+        "hex": "#828383",
+        "proportion": 0.163
+      },
+      {
+        "hex": "#9b9087",
+        "proportion": 0.144
+      },
+      {
+        "hex": "#d9dee1",
+        "proportion": 0.141
+      },
+      {
+        "hex": "#b2aea7",
+        "proportion": 0.1
+      }
+    ],
+    "similarity": [
+      {
+        "placeId": "bacheng",
+        "score": 73
+      },
+      {
+        "placeId": "genie",
+        "score": 53
+      },
+      {
+        "placeId": "jinxi",
+        "score": 46
+      },
+      {
+        "placeId": "hongkong",
+        "score": 28
+      }
+    ]
+  }
+]
