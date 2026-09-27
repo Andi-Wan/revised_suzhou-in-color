@@ -9,7 +9,8 @@ Live site: <https://charleston1107.github.io/suzhou-in-color/>
 - **Native geographic atlas:** replaces third-party map tiles with an editorial SVG outline of China and positions all five place nodes from the latitude and longitude stored in data.js.
 - **Editorial visual system:** uses a dark grid, high-contrast serif headings, compact uppercase labels, fine borders, and restrained palette accents.
 - **Unified Compare workspace:** replaces separate Compare and Similarity navigation with two explicit tasks.
-- **Photograph comparison:** lets users assign any two material-library photographs to A and B, then compares palette similarity, largest difference, shared family, lightness, chroma, and contextual compatibility.
+- **Direct photograph comparison:** removes the long A/B dropdowns. Users choose an active slot and click any thumbnail in the full, filterable photo library; A/B badges keep the current selection visible.
+- **Stable interaction position:** filters, theme changes, slot changes, and photo choices preserve the current scroll position instead of jumping to the top of the Compare page.
 - **Place comparison:** compares all photographs for discovery or applies a shared scene-category lens for a more defensible A/B comparison.
 - **Aligned difference chart:** places both samples in the same 12 perceptual color families, shows percentage-point differences, and preserves the original extracted shades.
 - **Adobe-inspired theme lenses:** applies the same Representative, Colorful, Bright, Muted, Deep, or Dark lens to both places.

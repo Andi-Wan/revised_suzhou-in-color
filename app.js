@@ -402,17 +402,6 @@ function compareView() {
     (state.compareTask === "photos" ? photoCompareView() : placeCompareView());
 }
 
-function photoOptions(selected) {
-  return D.places.map(function (place) {
-    return '<optgroup label="' + escapeHTML(place.name + " · " + place.nameZh) + '">' +
-      photosFor(place.id, "all").map(function (photo) {
-        const category = categoryById(photo.primaryCategory);
-        return '<option value="' + photo.id + '"' + (photo.id === selected ? " selected" : "") + ">" +
-          escapeHTML(photo.title + " · " + category.name) + '</option>';
-      }).join("") + '</optgroup>';
-  }).join("");
-}
-
 function paletteMetrics(photo, mode) {
   return themedEntries(photo, mode).reduce(function (metrics, entry) {
     const lab = hexToOklab(entry.hex);
@@ -441,6 +430,20 @@ function photoSelectionCard(photo, slot) {
   '</article>';
 }
 
+function photoSlotCard(photo, slot, index) {
+  const place = placeById(photo.placeId);
+  const category = categoryById(photo.primaryCategory);
+  const active = state.activePhotoSlot === index;
+  return '<button class="photo-slot-card' + (active ? " is-active" : "") + '" data-photo-slot="' + index +
+    '" aria-pressed="' + String(active) + '">' +
+      '<span class="slot-letter">' + slot + '</span>' +
+      '<img src="' + photo.src + '" alt="">' +
+      '<span class="slot-copy"><strong>' + escapeHTML(photo.title) + '</strong><small>' +
+        escapeHTML(place.name + " · " + category.name) + '</small></span>' +
+      '<span class="slot-action">' + (active ? "Choosing for this slot" : "Click to replace") + '</span>' +
+    '</button>';
+}
+
 function photoCompareView() {
   const firstPhoto = photoById(state.photoCompare[0]) || D.photos[0];
   const secondPhoto = photoById(state.photoCompare[1]) || D.photos[1];
@@ -463,14 +466,41 @@ function photoCompareView() {
       (state.libraryCategory === "all" || categoryIds.includes(state.libraryCategory));
   });
 
-  return '<section class="photo-picker-controls">' +
-    '<label class="control"><span>Photograph A</span><select id="photo-a">' + photoOptions(firstPhoto.id) + '</select></label>' +
-    '<label class="control"><span>Photograph B</span><select id="photo-b">' + photoOptions(secondPhoto.id) + '</select></label>' +
-    '<label class="control"><span>Adobe-inspired theme</span><select id="theme-mode">' + themeOptions(state.themeMode) + '</select></label>' +
+  return '<section class="photo-selection-workspace">' +
+    '<div class="selection-workspace-head"><div><p class="eyebrow">Step 1 · select evidence</p>' +
+      '<h2>Choose two photographs from the library</h2><p>Choose slot A or B, then click any thumbnail. Selecting an already chosen photograph focuses its slot.</p></div>' +
+      '<div class="selection-actions"><label class="control"><span>Adobe-inspired theme</span><select id="theme-mode">' +
+        themeOptions(state.themeMode) + '</select></label><a class="primary-button" href="#comparison-result">View comparison ↓</a></div></div>' +
+    '<div class="photo-slot-strip" role="group" aria-label="Selected comparison photographs">' +
+      photoSlotCard(firstPhoto, "A", 0) + photoSlotCard(secondPhoto, "B", 1) + '</div>' +
+    '<div class="library-toolbar">' +
+      '<label class="control"><span>Place</span><select id="library-place"><option value="all">All places</option>' +
+        D.places.map(function (place) {
+          return '<option value="' + place.id + '"' + (state.libraryPlace === place.id ? " selected" : "") + ">" +
+            escapeHTML(place.name) + '</option>';
+        }).join("") + '</select></label>' +
+      '<label class="control"><span>Category</span><select id="library-category">' + lensOptions(state.libraryCategory) + '</select></label>' +
+      '<button class="secondary-button" id="reset-photo-compare">Reset A/B</button></div>' +
+    '<p class="library-status"><strong>' + filteredLibrary.length + '</strong> photographs shown · your next new choice replaces <strong>' +
+      (state.activePhotoSlot === 0 ? "A" : "B") + '</strong>.</p>' +
+    (filteredLibrary.length ? '<div class="library-grid">' + filteredLibrary.map(function (photo) {
+      const place = placeById(photo.placeId);
+      const selectedIndex = state.photoCompare.indexOf(photo.id);
+      const selectionLabel = selectedIndex === 0 ? "A" : selectedIndex === 1 ? "B" : "";
+      return '<button class="library-photo' + (selectionLabel ? " is-selected selected-" + selectionLabel.toLowerCase() : "") +
+        '" data-library-photo="' + photo.id + '" aria-label="' +
+        escapeHTML((selectionLabel ? "Selected as " + selectionLabel + ". " : "") + photo.title + ", " + place.name) + '">' +
+        (selectionLabel ? '<i class="library-selection-badge">' + selectionLabel + '</i>' : "") +
+        '<img src="' + photo.src + '" alt="' + escapeHTML(photo.title) + '"><span><strong>' +
+        escapeHTML(place.name) + '</strong><small>' + escapeHTML(categoryById(photo.primaryCategory).name) +
+        '</small></span></button>';
+    }).join("") + '</div>' : '<div class="library-empty"><strong>No photographs match these filters.</strong><span>Change the place or category to continue selecting.</span></div>') +
   '</section>' +
   '<section class="theme-explainer"><span class="theme-badge">' + escapeHTML(THEME_MODES[state.themeMode].label) + '</span>' +
     '<p><strong>Same analytical rule:</strong> ' + escapeHTML(THEME_MODES[state.themeMode].description) +
     ' The comparison preserves both source photographs and their original five swatches.</p></section>' +
+  '<section class="comparison-result-heading" id="comparison-result"><p class="eyebrow">Step 2 · inspect the result</p>' +
+    '<h2>Compare the selected photographs</h2><p>Read color similarity together with category, place, date, lightness, and chroma.</p></section>' +
   '<section class="selected-photo-grid">' +
     photoSelectionCard(firstPhoto, "A") + photoSelectionCard(secondPhoto, "B") +
   '</section>' +
@@ -496,26 +526,7 @@ function photoCompareView() {
     { name: "B · " + placeById(secondPhoto.placeId).name },
     first,
     second
-  ) +
-  '<section class="material-library"><div class="section-heading"><div><p class="eyebrow">Material library</p><h2>Assign any photograph to A or B</h2></div>' +
-    '<p>Choose the active slot, filter the library, then select a thumbnail.</p></div>' +
-    '<div class="library-toolbar"><div class="slot-picker" role="group" aria-label="Active comparison slot">' +
-      '<button data-photo-slot="0" class="' + (state.activePhotoSlot === 0 ? "is-active" : "") + '">Replace A</button>' +
-      '<button data-photo-slot="1" class="' + (state.activePhotoSlot === 1 ? "is-active" : "") + '">Replace B</button></div>' +
-      '<label class="control"><span>Place</span><select id="library-place"><option value="all">All places</option>' +
-        D.places.map(function (place) {
-          return '<option value="' + place.id + '"' + (state.libraryPlace === place.id ? " selected" : "") + ">" +
-            escapeHTML(place.name) + '</option>';
-        }).join("") + '</select></label>' +
-      '<label class="control"><span>Category</span><select id="library-category">' + lensOptions(state.libraryCategory) + '</select></label></div>' +
-    '<div class="library-grid">' + filteredLibrary.map(function (photo) {
-      const place = placeById(photo.placeId);
-      const selected = state.photoCompare.includes(photo.id);
-      return '<button class="library-photo' + (selected ? " is-selected" : "") + '" data-library-photo="' + photo.id + '">' +
-        '<img src="' + photo.src + '" alt="' + escapeHTML(photo.title) + '"><span><strong>' +
-        escapeHTML(place.name) + '</strong><small>' + escapeHTML(categoryById(photo.primaryCategory).name) +
-        '</small></span></button>';
-    }).join("") + '</div></section>';
+  );
 }
 
 function placeCompareView() {
@@ -850,7 +861,9 @@ function methodView() {
     '<li>Community interpretation and permission review are still required before public claims.</li></ul></section>';
 }
 
-function render() {
+function render(options) {
+  const settings = options || {};
+  const previousScroll = settings.preserveScroll ? (window.scrollY || window.pageYOffset || 0) : 0;
   let content = "";
   if (state.view === "atlas") content = atlasView();
   if (state.view === "compare") content = compareView();
@@ -860,7 +873,7 @@ function render() {
   if (state.view === "about") content = methodView();
   app.innerHTML = nav() + '<main>' + content + '</main>' + footer();
   bind();
-  window.scrollTo({ top: 0, behavior: "auto" });
+  window.scrollTo({ top: previousScroll, behavior: "auto" });
 }
 
 function bind() {
@@ -882,7 +895,7 @@ function bind() {
     element.addEventListener("click", function () {
       state.compareTask = element.dataset.compareTask;
       state.compareFamily = null;
-      render();
+      render({ preserveScroll: true });
     });
   });
   document.querySelectorAll("[data-place]").forEach(function (element) {
@@ -919,7 +932,7 @@ function bind() {
   document.querySelectorAll("[data-family]").forEach(function (element) {
     element.addEventListener("click", function () {
       state.compareFamily = element.dataset.family;
-      render();
+      render({ preserveScroll: true });
     });
   });
   document.querySelectorAll("[data-sim-place]").forEach(function (element) {
@@ -930,7 +943,7 @@ function bind() {
       } else {
         state.sim = element.dataset.simPlace;
       }
-      render();
+      render({ preserveScroll: true });
     };
     element.addEventListener("click", activate);
     element.addEventListener("keydown", function (event) {
@@ -943,21 +956,24 @@ function bind() {
   document.querySelectorAll("[data-photo-slot]").forEach(function (element) {
     element.addEventListener("click", function () {
       state.activePhotoSlot = Number(element.dataset.photoSlot);
-      render();
+      render({ preserveScroll: true });
     });
   });
   document.querySelectorAll("[data-library-photo]").forEach(function (element) {
     element.addEventListener("click", function () {
-      state.photoCompare[state.activePhotoSlot] = element.dataset.libraryPhoto;
-      state.activePhotoSlot = state.activePhotoSlot === 0 ? 1 : 0;
+      const selectedIndex = state.photoCompare.indexOf(element.dataset.libraryPhoto);
+      if (selectedIndex >= 0) {
+        state.activePhotoSlot = selectedIndex;
+      } else {
+        state.photoCompare[state.activePhotoSlot] = element.dataset.libraryPhoto;
+        state.activePhotoSlot = state.activePhotoSlot === 0 ? 1 : 0;
+      }
       state.compareFamily = null;
-      render();
+      render({ preserveScroll: true });
     });
   });
   const compareA = document.getElementById("compare-a");
   const compareB = document.getElementById("compare-b");
-  const photoA = document.getElementById("photo-a");
-  const photoB = document.getElementById("photo-b");
   const compareLens = document.getElementById("compare-lens");
   const libraryPlace = document.getElementById("library-place");
   const libraryCategory = document.getElementById("library-category");
@@ -965,21 +981,26 @@ function bind() {
   const similarityLens = document.getElementById("similarity-lens");
   const themeMode = document.getElementById("theme-mode");
   const swap = document.getElementById("swap-places");
-  if (compareA) compareA.addEventListener("change", function () { state.compare[0] = compareA.value; state.compareFamily = null; render(); });
-  if (compareB) compareB.addEventListener("change", function () { state.compare[1] = compareB.value; state.compareFamily = null; render(); });
-  if (photoA) photoA.addEventListener("change", function () { state.photoCompare[0] = photoA.value; state.compareFamily = null; render(); });
-  if (photoB) photoB.addEventListener("change", function () { state.photoCompare[1] = photoB.value; state.compareFamily = null; render(); });
-  if (compareLens) compareLens.addEventListener("change", function () { state.compareLens = compareLens.value; state.compareFamily = null; render(); });
-  if (libraryPlace) libraryPlace.addEventListener("change", function () { state.libraryPlace = libraryPlace.value; render(); });
-  if (libraryCategory) libraryCategory.addEventListener("change", function () { state.libraryCategory = libraryCategory.value; render(); });
-  if (similarityPlace) similarityPlace.addEventListener("change", function () { state.sim = similarityPlace.value; render(); });
-  if (similarityLens) similarityLens.addEventListener("change", function () { state.simLens = similarityLens.value; render(); });
+  const resetPhotoCompare = document.getElementById("reset-photo-compare");
+  if (compareA) compareA.addEventListener("change", function () { state.compare[0] = compareA.value; state.compareFamily = null; render({ preserveScroll: true }); });
+  if (compareB) compareB.addEventListener("change", function () { state.compare[1] = compareB.value; state.compareFamily = null; render({ preserveScroll: true }); });
+  if (compareLens) compareLens.addEventListener("change", function () { state.compareLens = compareLens.value; state.compareFamily = null; render({ preserveScroll: true }); });
+  if (libraryPlace) libraryPlace.addEventListener("change", function () { state.libraryPlace = libraryPlace.value; render({ preserveScroll: true }); });
+  if (libraryCategory) libraryCategory.addEventListener("change", function () { state.libraryCategory = libraryCategory.value; render({ preserveScroll: true }); });
+  if (similarityPlace) similarityPlace.addEventListener("change", function () { state.sim = similarityPlace.value; render({ preserveScroll: true }); });
+  if (similarityLens) similarityLens.addEventListener("change", function () { state.simLens = similarityLens.value; render({ preserveScroll: true }); });
   if (themeMode) themeMode.addEventListener("change", function () {
     state.themeMode = themeMode.value;
     state.compareFamily = null;
-    render();
+    render({ preserveScroll: true });
   });
-  if (swap) swap.addEventListener("click", function () { state.compare.reverse(); state.compareFamily = null; render(); });
+  if (resetPhotoCompare) resetPhotoCompare.addEventListener("click", function () {
+    state.photoCompare = [D.photos[0].id, D.photos[1].id];
+    state.activePhotoSlot = 0;
+    state.compareFamily = null;
+    render({ preserveScroll: true });
+  });
+  if (swap) swap.addEventListener("click", function () { state.compare.reverse(); state.compareFamily = null; render({ preserveScroll: true }); });
 }
 
 render();
