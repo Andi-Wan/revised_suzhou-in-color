@@ -10,6 +10,7 @@ Live site: <https://charleston1107.github.io/suzhou-in-color/>
 - **Editorial visual system:** uses a dark grid, high-contrast serif headings, compact uppercase labels, fine borders, and restrained palette accents.
 - **Unified Compare workspace:** replaces separate Compare and Similarity navigation with two explicit tasks.
 - **Direct photograph comparison:** removes the long A/B dropdowns. Users choose an active slot and click any thumbnail in the full, filterable photo library; A/B badges keep the current selection visible.
+- **In-page editorial filters:** photograph place, category, and color-treatment filters use dark interface buttons instead of browser-native dropdown menus, keeping open controls visually consistent across operating systems.
 - **Stable interaction position:** filters, theme changes, slot changes, and photo choices preserve the current scroll position instead of jumping to the top of the Compare page.
 - **Place comparison:** compares all photographs for discovery or applies a shared scene-category lens for a more defensible A/B comparison.
 - **Aligned difference chart:** places both samples in the same 12 perceptual color families, shows percentage-point differences, and preserves the original extracted shades.

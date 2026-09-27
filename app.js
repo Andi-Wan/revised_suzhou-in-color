@@ -444,6 +444,34 @@ function photoSlotCard(photo, slot, index) {
     '</button>';
 }
 
+function themeChoiceButtons() {
+  return Object.keys(THEME_MODES).map(function (mode) {
+    return '<button class="filter-chip' + (state.themeMode === mode ? " is-active" : "") +
+      '" data-theme-mode="' + mode + '" aria-pressed="' + String(state.themeMode === mode) + '">' +
+      escapeHTML(THEME_MODES[mode].label) + '</button>';
+  }).join("");
+}
+
+function libraryPlaceButtons() {
+  return '<button class="filter-chip' + (state.libraryPlace === "all" ? " is-active" : "") +
+    '" data-library-place-filter="all" aria-pressed="' + String(state.libraryPlace === "all") + '">All places</button>' +
+    D.places.map(function (place) {
+      return '<button class="filter-chip' + (state.libraryPlace === place.id ? " is-active" : "") +
+        '" data-library-place-filter="' + place.id + '" aria-pressed="' + String(state.libraryPlace === place.id) + '">' +
+        escapeHTML(place.name) + '</button>';
+    }).join("");
+}
+
+function libraryCategoryButtons() {
+  return '<button class="filter-chip' + (state.libraryCategory === "all" ? " is-active" : "") +
+    '" data-library-category-filter="all" aria-pressed="' + String(state.libraryCategory === "all") + '">All photographs</button>' +
+    D.categories.map(function (category) {
+      return '<button class="filter-chip' + (state.libraryCategory === category.id ? " is-active" : "") +
+        '" data-library-category-filter="' + category.id + '" aria-pressed="' + String(state.libraryCategory === category.id) + '">' +
+        escapeHTML(category.name) + '</button>';
+    }).join("");
+}
+
 function photoCompareView() {
   const firstPhoto = photoById(state.photoCompare[0]) || D.photos[0];
   const secondPhoto = photoById(state.photoCompare[1]) || D.photos[1];
@@ -469,18 +497,17 @@ function photoCompareView() {
   return '<section class="photo-selection-workspace">' +
     '<div class="selection-workspace-head"><div><p class="eyebrow">Step 1 · select evidence</p>' +
       '<h2>Choose two photographs from the library</h2><p>Choose slot A or B, then click any thumbnail. Selecting an already chosen photograph focuses its slot.</p></div>' +
-      '<div class="selection-actions"><label class="control"><span>Adobe-inspired theme</span><select id="theme-mode">' +
-        themeOptions(state.themeMode) + '</select></label><a class="primary-button" href="#comparison-result">View comparison ↓</a></div></div>' +
+      '<div class="selection-actions"><a class="primary-button" href="#comparison-result">View comparison ↓</a></div></div>' +
     '<div class="photo-slot-strip" role="group" aria-label="Selected comparison photographs">' +
       photoSlotCard(firstPhoto, "A", 0) + photoSlotCard(secondPhoto, "B", 1) + '</div>' +
-    '<div class="library-toolbar">' +
-      '<label class="control"><span>Place</span><select id="library-place"><option value="all">All places</option>' +
-        D.places.map(function (place) {
-          return '<option value="' + place.id + '"' + (state.libraryPlace === place.id ? " selected" : "") + ">" +
-            escapeHTML(place.name) + '</option>';
-        }).join("") + '</select></label>' +
-      '<label class="control"><span>Category</span><select id="library-category">' + lensOptions(state.libraryCategory) + '</select></label>' +
-      '<button class="secondary-button" id="reset-photo-compare">Reset A/B</button></div>' +
+    '<div class="photo-filter-panel">' +
+      '<div class="filter-row"><span class="filter-label">Color treatment</span><div class="filter-chips">' +
+        themeChoiceButtons() + '</div></div>' +
+      '<div class="filter-row"><span class="filter-label">Place</span><div class="filter-chips">' +
+        libraryPlaceButtons() + '</div></div>' +
+      '<div class="filter-row"><span class="filter-label">Category</span><div class="filter-chips">' +
+        libraryCategoryButtons() + '</div><button class="filter-reset" id="reset-photo-compare">Reset A/B</button></div>' +
+    '</div>' +
     '<p class="library-status"><strong>' + filteredLibrary.length + '</strong> photographs shown · your next new choice replaces <strong>' +
       (state.activePhotoSlot === 0 ? "A" : "B") + '</strong>.</p>' +
     (filteredLibrary.length ? '<div class="library-grid">' + filteredLibrary.map(function (photo) {
@@ -968,6 +995,25 @@ function bind() {
         state.photoCompare[state.activePhotoSlot] = element.dataset.libraryPhoto;
         state.activePhotoSlot = state.activePhotoSlot === 0 ? 1 : 0;
       }
+      state.compareFamily = null;
+      render({ preserveScroll: true });
+    });
+  });
+  document.querySelectorAll("[data-library-place-filter]").forEach(function (element) {
+    element.addEventListener("click", function () {
+      state.libraryPlace = element.dataset.libraryPlaceFilter;
+      render({ preserveScroll: true });
+    });
+  });
+  document.querySelectorAll("[data-library-category-filter]").forEach(function (element) {
+    element.addEventListener("click", function () {
+      state.libraryCategory = element.dataset.libraryCategoryFilter;
+      render({ preserveScroll: true });
+    });
+  });
+  document.querySelectorAll("[data-theme-mode]").forEach(function (element) {
+    element.addEventListener("click", function () {
+      state.themeMode = element.dataset.themeMode;
       state.compareFamily = null;
       render({ preserveScroll: true });
     });
