@@ -6,7 +6,8 @@ Live site: <https://charleston1107.github.io/suzhou-in-color/>
 
 ## What changed in this redesign
 
-- **Geographic map:** plots all five places from the latitude and longitude stored in data.js.
+- **Native geographic atlas:** replaces third-party map tiles with an editorial SVG outline of China and positions all five place nodes from the latitude and longitude stored in data.js.
+- **Editorial visual system:** uses a dark grid, high-contrast serif headings, compact uppercase labels, fine borders, and restrained palette accents.
 - **Unified Compare workspace:** replaces separate Compare and Similarity navigation with two explicit tasks.
 - **Photograph comparison:** lets users assign any two material-library photographs to A and B, then compares palette similarity, largest difference, shared family, lightness, chroma, and contextual compatibility.
 - **Place comparison:** compares all photographs for discovery or applies a shared scene-category lens for a more defensible A/B comparison.
@@ -63,11 +64,11 @@ This is a static site with no build step. From the repository root, run:
 
 Then open <http://localhost:8000/>.
 
-Internet access is needed for Leaflet and OpenStreetMap tiles. If map tiles fail, the accessible location list still provides all five place records. The rest of the prototype uses local repository files.
+The geographic view is rendered locally as SVG and does not require Leaflet or map tiles. Its simplified 1:110m outline is derived from Natural Earth public-domain geometry; it is a spatial-orientation scaffold rather than an official boundary reference. Place nodes are projected from the WGS84 coordinates in `data.js`, while the accessible location list exposes the same records in text.
 
 ## Files
 
-- index.html — document shell and Leaflet dependency
+- index.html — static document shell
 - styles.css — responsive interface styles
 - data.js — places, photographs, categories, palettes, and metadata
 - app.js — map, filtering, comparison, source trace, and similarity logic
@@ -79,4 +80,4 @@ Internet access is needed for Leaflet and OpenStreetMap tiles. If map tiles fail
 - The original full-image extraction script is not yet included, so the stored five-color palettes cannot yet be independently regenerated.
 - Category-matched comparison reduces one confound but does not make the sample representative.
 - Community review, permission checks, and fuller provenance remain necessary before public cultural claims.
-- OpenStreetMap tiles are provided by OpenStreetMap contributors and loaded from the public tile service.
+- The simplified outline is for orientation and should not be reused as an official administrative-boundary map.

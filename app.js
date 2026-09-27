@@ -3,7 +3,6 @@
 const D = window.ATLAS_DATA;
 const app = document.getElementById("app");
 
-let mapInstance = null;
 let state = {
   view: "atlas",
   place: null,
@@ -75,6 +74,19 @@ const RELATION_POSITIONS = {
   hongkong: [725, 215],
   genie: [255, 430],
   luoyang: [645, 430]
+};
+
+// Simplified Natural Earth 1:110m geometry projected into a 1000 x 620 viewBox.
+// It is used as a quiet geographic scaffold rather than an official boundary map.
+const CHINA_OUTLINE_PATH = "M112.4,275.1 L110.0,271.3 L108.0,263.8 L108.5,258.7 L100.3,255.7 L95.9,257.0 L92.5,244.9 L96.3,241.8 L94.5,238.8 L107.3,232.5 L116.6,230.0 L130.8,231.7 L135.9,223.3 L153.1,221.8 L157.9,216.5 L179.1,209.4 L181.0,206.4 L179.9,198.9 L189.1,195.5 L177.0,172.7 L203.7,167.4 L210.5,164.5 L220.2,140.9 L246.9,145.3 L254.4,139.3 L255.0,126.1 L266.2,124.9 L276.4,116.1 L281.7,115.0 L285.2,124.2 L296.5,131.2 L315.6,136.1 L324.9,146.7 L319.7,162.1 L324.6,167.8 L340.5,170.1 L358.6,171.9 L374.9,180.1 L383.2,181.6 L389.3,193.7 L397.2,201.5 L412.0,201.2 L439.7,204.1 L457.6,202.3 L470.9,204.3 L490.8,212.3 L507.0,212.3 L513.0,216.3 L528.6,209.3 L550.3,204.7 L570.5,204.2 L586.2,199.6 L595.8,192.5 L605.2,188.1 L603.0,183.8 L598.7,178.7 L605.8,170.2 L613.4,171.4 L627.2,174.1 L640.6,167.1 L661.0,162.0 L670.9,153.3 L680.4,149.6 L699.9,147.8 L710.5,149.3 L711.9,144.6 L699.8,135.4 L689.0,131.2 L678.7,136.1 L665.4,134.0 L657.8,135.7 L654.3,130.3 L663.8,117.2 L670.4,107.3 L686.5,112.2 L705.4,103.9 L705.3,98.1 L717.4,84.2 L724.9,79.9 L724.8,72.7 L717.4,69.6 L728.5,63.0 L745.2,60.6 L763.0,60.3 L783.1,64.2 L794.9,69.0 L803.2,82.3 L808.2,88.0 L812.9,96.1 L817.9,108.9 L841.3,113.1 L857.2,122.5 L862.6,134.9 L883.1,134.9 L894.7,129.7 L916.9,125.8 L909.9,137.7 L904.6,142.5 L900.0,156.9 L891.0,169.7 L874.7,167.4 L863.2,172.0 L866.7,183.3 L864.8,198.8 L857.9,199.2 L858.0,205.9 L849.3,198.1 L844.0,205.5 L823.2,211.1 L825.3,218.1 L813.7,217.6 L807.3,213.5 L798.1,222.8 L783.3,229.9 L772.3,238.3 L753.5,242.1 L743.6,248.3 L729.2,251.9 L736.3,245.8 L733.5,240.7 L744.1,231.8 L737.0,224.9 L725.3,229.6 L710.2,238.7 L701.9,247.2 L688.7,247.8 L681.8,254.0 L688.9,262.9 L699.9,265.0 L700.4,270.9 L711.0,274.8 L726.1,265.4 L738.0,270.5 L746.7,270.9 L748.9,277.8 L729.8,281.4 L723.6,288.5 L710.5,295.1 L703.6,304.3 L718.1,311.6 L723.3,324.5 L731.5,336.6 L740.6,346.7 L740.4,356.5 L732.0,360.0 L735.2,367.1 L743.1,371.2 L741.0,381.9 L737.6,392.3 L730.1,393.5 L720.3,407.7 L709.4,425.0 L697.0,440.7 L678.5,452.8 L659.8,463.9 L644.6,465.4 L636.4,471.3 L631.8,467.0 L624.2,473.5 L605.4,480.1 L591.2,482.1 L586.6,496.0 L579.1,496.8 L575.6,487.3 L578.8,482.2 L560.8,478.0 L554.4,480.1 L540.9,476.7 L534.5,471.3 L536.6,463.8 L524.3,461.4 L517.9,456.4 L506.4,463.4 L493.3,465.0 L482.6,464.9 L475.4,468.1 L468.4,470.0 L470.5,485.1 L463.3,484.7 L462.1,481.6 L461.7,476.2 L451.8,480.0 L446.0,477.6 L436.0,472.7 L440.0,461.7 L431.5,459.2 L428.2,447.1 L414.1,449.2 L415.7,433.6 L428.4,422.6 L428.9,411.8 L428.5,401.7 L422.7,398.6 L418.2,390.8 L410.3,391.8 L395.8,389.9 L400.4,384.3 L394.1,376.1 L384.5,381.7 L373.2,378.5 L357.7,386.8 L345.5,396.6 L334.7,398.3 L328.8,394.7 L321.7,394.4 L312.1,391.4 L304.8,394.7 L295.9,404.5 L294.8,394.1 L286.6,396.9 L271.0,395.6 L255.8,392.6 L244.8,386.8 L234.4,384.2 L229.9,377.9 L222.3,376.0 L208.8,367.4 L198.0,363.4 L192.4,366.5 L173.8,357.3 L160.6,349.0 L156.8,334.5 L166.4,336.3 L166.9,329.5 L161.5,322.8 L162.9,312.1 L148.4,296.7 L126.3,291.3 L122.4,281.2 L112.4,275.1 Z M585.2,517.9 L573.6,524.2 L562.6,520.2 L562.2,508.8 L568.8,502.9 L583.5,499.2 L591.2,499.5 L594.2,504.5 L588.3,510.3 L585.2,517.9 Z";
+const TAIWAN_OUTLINE_PATH = "M738.9,442.7 L730.8,463.8 L725.0,474.6 L718.0,463.5 L716.4,453.7 L724.3,440.8 L735.1,430.8 L741.2,434.8 L738.9,442.7 Z";
+
+const MAP_CALLOUTS = {
+  genie: { x: 212, y: 393, w: 188, anchorX: 395, anchorY: 424 },
+  luoyang: { x: 498, y: 188, w: 188, anchorX: 590, anchorY: 278 },
+  jinxi: { x: 778, y: 270, w: 184, anchorX: 778, anchorY: 315 },
+  bacheng: { x: 785, y: 383, w: 177, anchorX: 785, anchorY: 413 },
+  hongkong: { x: 676, y: 500, w: 214, anchorX: 676, anchorY: 520 }
 };
 
 function escapeHTML(value) {
@@ -262,13 +274,13 @@ function nav() {
     ["about", "Method"]
   ];
   return '<header class="site-header"><a class="brand" href="#" data-nav="atlas" aria-label="Colors of Place home">' +
-    '<span class="brand-mark" aria-hidden="true"></span><span>Colors of Place</span></a>' +
+    '<strong>CN/COLOR</strong><small>A living atlas of recorded color</small></a>' +
     '<nav aria-label="Primary navigation">' +
     items.map(function (item) {
       return '<button class="nav-button' + (state.view === item[0] ? " is-active" : "") +
         '" data-nav="' + item[0] + '">' + item[1] + "</button>";
     }).join("") +
-    '</nav><span class="prototype-label">Sample atlas · v2</span></header>';
+    '</nav><span class="prototype-label">Prototype · 50 sampled photographs</span></header>';
 }
 
 function footer() {
@@ -291,13 +303,12 @@ function placeSelect(id, selected, label) {
 
 function atlasView() {
   return hero(
-    "Spatial view",
-    "Where were these colors recorded?",
-    "Explore the five geographic samples before comparing them. Map position encodes latitude and longitude; it does not encode palette similarity."
+    "Dataset overview · spatial evidence",
+    "A geographic atlas of recorded color.",
+    "Five photographic samples are positioned by latitude and longitude. Their placement shows where the records come from—not whether the places are culturally or chromatically similar."
   ) +
   '<section class="map-layout">' +
-    '<div class="map-card"><div id="geo-map" class="geo-map" role="region" aria-label="Interactive map of five sampled places"></div>' +
-      '<div id="map-fallback" class="map-fallback" hidden>Map tiles are unavailable. Use the location list to open each sample.</div></div>' +
+    '<div class="map-card geographic-map-card" tabindex="0" aria-label="Scrollable geographic atlas">' + chinaMapGraphic() + '</div>' +
     '<aside class="map-aside"><p class="eyebrow">Data boundary</p><h2>5 places, 50 photographs</h2>' +
       '<p>This is a selected photographic sample, not a national color census. Coordinates locate each place; individual photo coordinates are still incomplete.</p>' +
       '<div class="place-list">' +
@@ -306,44 +317,62 @@ function atlasView() {
           '<span><strong>' + escapeHTML(place.name) + '</strong><small>' + escapeHTML(place.nameZh + " · " + place.region) + '</small></span>' +
           '<span class="coordinates">' + place.coordinates[0].toFixed(3) + "°, " + place.coordinates[1].toFixed(3) + "°</span></button>";
       }).join("") +
-      '</div></aside></section>' +
+      '</div><p class="map-source-note">Simplified outline: Natural Earth 1:110m. Point positions use the WGS84 place coordinates recorded in this prototype. The outline is for orientation, not an official boundary reference.</p></aside></section>' +
     '<section class="view-bridge"><div><p class="eyebrow">Next question</p><h2>Geographic distance is not color similarity.</h2>' +
-      '<p>Use the comparison view for matched evidence, or the relationship view to inspect sample-based palette similarity.</p></div>' +
+      '<p>Use Compare for matched evidence; its place-level view also contains the sample-based similarity network.</p></div>' +
       '<div class="button-row"><button class="primary-button" data-open-compare="places">Compare places</button>' +
       '<button class="secondary-button" data-open-compare="photos">Compare photographs</button></div></section>';
 }
 
-function initMap() {
-  const fallback = document.getElementById("map-fallback");
-  if (!document.getElementById("geo-map")) return;
-  if (!window.L) {
-    if (fallback) fallback.hidden = false;
-    return;
-  }
-  if (mapInstance) mapInstance.remove();
-  mapInstance = window.L.map("geo-map", { scrollWheelZoom: false, minZoom: 3 }).setView([30.7, 109.5], 4);
-  window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-  }).addTo(mapInstance);
-  const bounds = [];
-  D.places.forEach(function (place) {
-    const marker = window.L.circleMarker(place.coordinates, {
-      radius: 10,
-      color: "#111211",
-      weight: 3,
-      fillColor: "#e8d8aa",
-      fillOpacity: 1
-    }).addTo(mapInstance);
-    marker.bindTooltip('<strong>' + escapeHTML(place.name) + '</strong><br>' + escapeHTML(place.nameZh + " · " + place.photoCount + " photos"));
-    marker.on("click", function () {
-      state.place = place.id;
-      state.view = "place";
-      render();
-    });
-    bounds.push(place.coordinates);
-  });
-  mapInstance.fitBounds(bounds, { padding: [42, 42], maxZoom: 5 });
+function projectGeographic(coordinates) {
+  const latitude = coordinates[0];
+  const longitude = coordinates[1];
+  return {
+    x: 70 + (longitude - 72) / 64 * 860,
+    y: 40 + (55 - latitude) / 38 * 500
+  };
+}
+
+function mapPalette(place, x, y) {
+  return place.recordedPalette.slice(0, 5).map(function (entry, index) {
+    return '<rect class="map-palette-swatch" x="' + (x + index * 17) + '" y="' + y +
+      '" width="13" height="13" fill="' + escapeHTML(entry.hex) + '"></rect>';
+  }).join("");
+}
+
+function mapNode(place) {
+  const point = projectGeographic(place.coordinates);
+  const callout = MAP_CALLOUTS[place.id];
+  const labelY = callout.y + 28;
+  const coordinateLabel = place.coordinates[0].toFixed(2) + '° N · ' + place.coordinates[1].toFixed(2) + '° E';
+  return '<g class="china-node" data-place="' + place.id + '" role="button" tabindex="0" aria-label="Open ' +
+    escapeHTML(place.name + ', ' + place.region) + '">' +
+      '<line class="map-leader" x1="' + point.x.toFixed(1) + '" y1="' + point.y.toFixed(1) + '" x2="' +
+        callout.anchorX + '" y2="' + callout.anchorY + '"></line>' +
+      '<circle class="map-node-halo" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="13"></circle>' +
+      '<circle class="map-node-dot" cx="' + point.x.toFixed(1) + '" cy="' + point.y.toFixed(1) + '" r="5"></circle>' +
+      '<rect class="map-callout-bg" x="' + callout.x + '" y="' + callout.y + '" width="' + callout.w + '" height="82"></rect>' +
+      '<text class="map-place-name" x="' + (callout.x + 13) + '" y="' + labelY + '">' + escapeHTML(place.name.toUpperCase()) + '</text>' +
+      '<text class="map-place-zh" x="' + (callout.x + callout.w - 13) + '" y="' + labelY + '" text-anchor="end">' + escapeHTML(place.nameZh) + '</text>' +
+      '<text class="map-coordinate" x="' + (callout.x + 13) + '" y="' + (labelY + 19) + '">' + escapeHTML(coordinateLabel) + '</text>' +
+      mapPalette(place, callout.x + 13, labelY + 30) +
+    '</g>';
+}
+
+function chinaMapGraphic() {
+  return '<div class="map-title-line"><span>GEOGRAPHIC SAMPLE / 05</span><span>CLICK A LOCATION TO OPEN ITS RECORDS</span></div>' +
+    '<svg class="china-map" viewBox="0 0 1000 620" role="img" aria-labelledby="china-map-title china-map-desc">' +
+      '<title id="china-map-title">Five sampled places positioned on an outline of China</title>' +
+      '<desc id="china-map-desc">Genie Town in western Sichuan, Luoyang in Henan, Jinxi and Bacheng near Suzhou, and Hong Kong are positioned using latitude and longitude.</desc>' +
+      '<g class="map-graticule" aria-hidden="true">' +
+        '<line x1="70" y1="165" x2="930" y2="165"></line><line x1="70" y1="290" x2="930" y2="290"></line><line x1="70" y1="415" x2="930" y2="415"></line>' +
+        '<line x1="285" y1="40" x2="285" y2="540"></line><line x1="500" y1="40" x2="500" y2="540"></line><line x1="715" y1="40" x2="715" y2="540"></line>' +
+      '</g>' +
+      '<path class="china-outline" d="' + CHINA_OUTLINE_PATH + '"></path>' +
+      '<path class="china-outline island" d="' + TAIWAN_OUTLINE_PATH + '"></path>' +
+      D.places.map(mapNode).join("") +
+      '<text class="map-axis-label" x="70" y="582">WGS84 COORDINATE POSITION · SCHEMATIC OUTLINE</text>' +
+    '</svg>';
 }
 
 function comparisonRows(first, second) {
@@ -797,7 +826,7 @@ function methodView() {
     "The redesign separates geographic location, contextual comparison, and palette relationships so each view answers a different question."
   ) +
   '<section class="method-grid">' +
-    '<article><span>01</span><h2>Map</h2><p>Answers where photographs were recorded. Marker position comes from place-level latitude and longitude.</p></article>' +
+    '<article><span>01</span><h2>Map</h2><p>Uses a native SVG outline for orientation and positions each node from place-level latitude and longitude.</p></article>' +
     '<article><span>02</span><h2>Photo comparison</h2><p>Lets users choose any two library records and inspect image-level similarity, difference, lightness, chroma, and context.</p></article>' +
     '<article><span>03</span><h2>Place comparison</h2><p>Aggregates matched samples and separates observed colors from possible cultural and material explanations.</p></article>' +
     '<article><span>04</span><h2>Relationship evidence</h2><p>Places similarity, source trace, and the all-place network inside the comparison task rather than treating them as separate destinations.</p></article>' +
@@ -822,10 +851,6 @@ function methodView() {
 }
 
 function render() {
-  if (mapInstance) {
-    mapInstance.remove();
-    mapInstance = null;
-  }
   let content = "";
   if (state.view === "atlas") content = atlasView();
   if (state.view === "compare") content = compareView();
@@ -835,7 +860,6 @@ function render() {
   if (state.view === "about") content = methodView();
   app.innerHTML = nav() + '<main>' + content + '</main>' + footer();
   bind();
-  if (state.view === "atlas") window.setTimeout(initMap, 0);
   window.scrollTo({ top: 0, behavior: "auto" });
 }
 
@@ -862,10 +886,17 @@ function bind() {
     });
   });
   document.querySelectorAll("[data-place]").forEach(function (element) {
-    element.addEventListener("click", function () {
+    const activate = function () {
       state.place = element.dataset.place;
       state.view = "place";
       render();
+    };
+    element.addEventListener("click", activate);
+    element.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activate();
+      }
     });
   });
   document.querySelectorAll("[data-category]").forEach(function (element) {
