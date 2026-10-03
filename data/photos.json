@@ -14,27 +14,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#202a29",
-        "proportion": 0.256
+        "hex": "#bcd5e3",
+        "proportion": 0.298238
       },
       {
-        "hex": "#95b1c0",
-        "proportion": 0.223
+        "hex": "#93afbf",
+        "proportion": 0.181447
       },
       {
-        "hex": "#60747a",
-        "proportion": 0.222
+        "hex": "#1a2021",
+        "proportion": 0.180736
       },
       {
-        "hex": "#b9d1df",
-        "proportion": 0.17
+        "hex": "#485453",
+        "proportion": 0.179344
       },
       {
-        "hex": "#c5deec",
-        "proportion": 0.129
+        "hex": "#6e8895",
+        "proportion": 0.160235
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3333477025,
+      "maxIterations": 40,
+      "sourceSha256": "4459558ad8fbaa51a2823f0f921ab555e95e8879a509af27a091ae11a3433b66"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -52,27 +61,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#1f2a2d",
-        "proportion": 0.319
+        "hex": "#36464d",
+        "proportion": 0.331694
       },
       {
-        "hex": "#31474d",
-        "proportion": 0.243
+        "hex": "#232d30",
+        "proportion": 0.331633
       },
       {
-        "hex": "#592723",
-        "proportion": 0.21
+        "hex": "#463030",
+        "proportion": 0.155164
       },
       {
-        "hex": "#3d3a3e",
-        "proportion": 0.142
+        "hex": "#682f29",
+        "proportion": 0.110482
       },
       {
-        "hex": "#4d4c52",
-        "proportion": 0.086
+        "hex": "#8d2a1c",
+        "proportion": 0.071027
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3340696035,
+      "maxIterations": 40,
+      "sourceSha256": "63903491babac979ffe6cdeb18be69072bc00986692667cb3bc4b18fc01292d9"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -90,27 +108,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#222123",
-        "proportion": 0.286
+        "hex": "#2d3335",
+        "proportion": 0.356586
       },
       {
-        "hex": "#2e3436",
-        "proportion": 0.234
+        "hex": "#111416",
+        "proportion": 0.298918
       },
       {
-        "hex": "#100f10",
-        "proportion": 0.212
+        "hex": "#505451",
+        "proportion": 0.151608
       },
       {
-        "hex": "#434949",
-        "proportion": 0.163
+        "hex": "#2c1c1b",
+        "proportion": 0.119388
       },
       {
-        "hex": "#687776",
-        "proportion": 0.105
+        "hex": "#748a8d",
+        "proportion": 0.0735
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2675519742,
+      "maxIterations": 40,
+      "sourceSha256": "1c81f25976a5c9276f2b64ac5a98400fe9473dbe8780357d148be20bfdd0eb7b"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -128,27 +155,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#606b5b",
-        "proportion": 0.276
+        "hex": "#f3f5f4",
+        "proportion": 0.42245
       },
       {
-        "hex": "#363c34",
-        "proportion": 0.258
+        "hex": "#323731",
+        "proportion": 0.200649
       },
       {
-        "hex": "#f5f7f5",
-        "proportion": 0.246
+        "hex": "#4e624b",
+        "proportion": 0.160049
       },
       {
-        "hex": "#fefffe",
-        "proportion": 0.144
+        "hex": "#696a62",
+        "proportion": 0.124861
       },
       {
-        "hex": "#cfd4cf",
-        "proportion": 0.076
+        "hex": "#99a097",
+        "proportion": 0.091991
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 791050018,
+      "maxIterations": 40,
+      "sourceSha256": "ee68840ce5bcf18a9d2523aa994011ccf96b361b6228eb4b4f08769c8aa128eb"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -166,27 +202,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#f8fdfe",
-        "proportion": 0.354
+        "hex": "#f9fcfd",
+        "proportion": 0.619573
       },
       {
-        "hex": "#7b5a52",
-        "proportion": 0.298
+        "hex": "#978f89",
+        "proportion": 0.173655
       },
       {
-        "hex": "#feffff",
-        "proportion": 0.205
+        "hex": "#706a64",
+        "proportion": 0.103401
       },
       {
-        "hex": "#c0bdba",
-        "proportion": 0.089
+        "hex": "#3e332e",
+        "proportion": 0.052412
       },
       {
-        "hex": "#fcfdfe",
-        "proportion": 0.054
+        "hex": "#cd4d38",
+        "proportion": 0.050959
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3609097474,
+      "maxIterations": 40,
+      "sourceSha256": "3373b99bb0d762a67b1e48cecbdedd15e4dbb1b02e10dd41be225731299199d9"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -204,27 +249,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#eef1f0",
-        "proportion": 0.271
+        "hex": "#f0f2f1",
+        "proportion": 0.613574
       },
       {
-        "hex": "#585f59",
-        "proportion": 0.215
+        "hex": "#c1c5c4",
+        "proportion": 0.143476
       },
       {
-        "hex": "#cfd3d2",
-        "proportion": 0.203
+        "hex": "#888f8a",
+        "proportion": 0.087415
       },
       {
-        "hex": "#f5f7f6",
-        "proportion": 0.166
+        "hex": "#262a28",
+        "proportion": 0.078448
       },
       {
-        "hex": "#fafafa",
-        "proportion": 0.145
+        "hex": "#525b4f",
+        "proportion": 0.077087
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 4091670345,
+      "maxIterations": 40,
+      "sourceSha256": "b4fb1c5ef339e801fab86b03a45738f3fa5d749ae23fcd9ca3a3a1935a0f27ca"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -242,27 +296,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#4a5447",
-        "proportion": 0.244
+        "hex": "#121411",
+        "proportion": 0.347465
       },
       {
-        "hex": "#090c09",
-        "proportion": 0.236
+        "hex": "#797a75",
+        "proportion": 0.211317
       },
       {
-        "hex": "#939792",
-        "proportion": 0.215
+        "hex": "#41423e",
+        "proportion": 0.195918
       },
       {
-        "hex": "#31342d",
-        "proportion": 0.164
+        "hex": "#31472d",
+        "proportion": 0.159524
       },
       {
-        "hex": "#1c251b",
-        "proportion": 0.141
+        "hex": "#bec2c2",
+        "proportion": 0.085776
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3874222642,
+      "maxIterations": 40,
+      "sourceSha256": "c17c468c9a423325b7818920752578893358818f7ffa1099c649e33db192a02b"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -280,27 +343,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#858684",
-        "proportion": 0.246
+        "hex": "#e3e4e3",
+        "proportion": 0.361039
       },
       {
-        "hex": "#433e3a",
-        "proportion": 0.244
+        "hex": "#b5b6b4",
+        "proportion": 0.183643
       },
       {
-        "hex": "#e2e3e2",
-        "proportion": 0.213
+        "hex": "#838482",
+        "proportion": 0.181076
       },
       {
-        "hex": "#c5c7c5",
-        "proportion": 0.194
+        "hex": "#58524e",
+        "proportion": 0.164873
       },
       {
-        "hex": "#eef0ef",
-        "proportion": 0.103
+        "hex": "#2a2724",
+        "proportion": 0.109369
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2380647716,
+      "maxIterations": 40,
+      "sourceSha256": "96731863be94bdd72665ed3f2449e1fea82e77503d2b772b3eb471fc0d518ba0"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -318,27 +390,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#677367",
-        "proportion": 0.255
+        "hex": "#171919",
+        "proportion": 0.372324
       },
       {
-        "hex": "#0f1212",
-        "proportion": 0.216
+        "hex": "#fafbfb",
+        "proportion": 0.192239
       },
       {
-        "hex": "#e2e6e3",
-        "proportion": 0.211
+        "hex": "#464a45",
+        "proportion": 0.189116
       },
       {
-        "hex": "#242423",
-        "proportion": 0.166
+        "hex": "#888a89",
+        "proportion": 0.164688
       },
       {
-        "hex": "#3a403c",
-        "proportion": 0.152
+        "hex": "#5d7f58",
+        "proportion": 0.081633
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 4223722387,
+      "maxIterations": 40,
+      "sourceSha256": "7d58d8a46a3dc88180495c62307d8eb20054a5f0dc96b8c5bb54d24557d17c0e"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -356,27 +437,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#080707",
-        "proportion": 0.272
+        "hex": "#120f0d",
+        "proportion": 0.452722
       },
       {
-        "hex": "#1e1510",
-        "proportion": 0.224
+        "hex": "#30393f",
+        "proportion": 0.187755
       },
       {
-        "hex": "#382f29",
-        "proportion": 0.219
+        "hex": "#3b281c",
+        "proportion": 0.174675
       },
       {
-        "hex": "#44423f",
-        "proportion": 0.182
+        "hex": "#6d4933",
+        "proportion": 0.101113
       },
       {
-        "hex": "#615f57",
-        "proportion": 0.102
+        "hex": "#585f5e",
+        "proportion": 0.083735
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2869700367,
+      "maxIterations": 40,
+      "sourceSha256": "ef6b6c0e3f2f5c732b301e7e0cea3fbbeb809b39cec44ffddf1834b647d4d98f"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -394,27 +484,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#a8b1ad",
-        "proportion": 0.248
+        "hex": "#e2d8ca",
+        "proportion": 0.316336
       },
       {
-        "hex": "#cbcaca",
-        "proportion": 0.228
+        "hex": "#a8afac",
+        "proportion": 0.300028
       },
       {
-        "hex": "#434e31",
-        "proportion": 0.22
+        "hex": "#c5d5e9",
+        "proportion": 0.159642
       },
       {
-        "hex": "#dbd8d9",
-        "proportion": 0.19
+        "hex": "#2a361e",
+        "proportion": 0.140606
       },
       {
-        "hex": "#eae8e1",
-        "proportion": 0.113
+        "hex": "#5d6338",
+        "proportion": 0.083388
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2213866697,
+      "maxIterations": 40,
+      "sourceSha256": "947c80614f88e276b5d306210add951d94dbf1fcc1f4ecae6b85bc70d1750bdb"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -432,27 +531,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#acaaa9",
-        "proportion": 0.261
+        "hex": "#96928f",
+        "proportion": 0.456005
       },
       {
-        "hex": "#898888",
-        "proportion": 0.257
+        "hex": "#d8d5d2",
+        "proportion": 0.303967
       },
       {
-        "hex": "#413f46",
-        "proportion": 0.217
+        "hex": "#3b3538",
+        "proportion": 0.194518
       },
       {
-        "hex": "#cfcecb",
-        "proportion": 0.136
+        "hex": "#2a63aa",
+        "proportion": 0.023196
       },
       {
-        "hex": "#e8e8e7",
-        "proportion": 0.13
+        "hex": "#86aedd",
+        "proportion": 0.022314
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 4238647970,
+      "maxIterations": 40,
+      "sourceSha256": "a5332c82868ab60fc6bb136abd8f605588887c54e2e30f53b49a88c4f0e4cb8e"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -470,27 +578,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#b2b2b2",
-        "proportion": 0.295
+        "hex": "#cdcecf",
+        "proportion": 0.37
       },
       {
-        "hex": "#d0d2d3",
-        "proportion": 0.258
+        "hex": "#a2a2a1",
+        "proportion": 0.241377
       },
       {
-        "hex": "#666363",
-        "proportion": 0.181
+        "hex": "#e3ecfa",
+        "proportion": 0.228017
       },
       {
-        "hex": "#e5effc",
-        "proportion": 0.176
+        "hex": "#686464",
+        "proportion": 0.100992
       },
       {
-        "hex": "#dde4ef",
-        "proportion": 0.089
+        "hex": "#212121",
+        "proportion": 0.059614
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1230325328,
+      "maxIterations": 40,
+      "sourceSha256": "d204cf32b2bb973543f7d616cdc7dd9f6801d95ef76c7d99beb468e07abd3174"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -508,27 +625,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#746d65",
-        "proportion": 0.295
+        "hex": "#79736e",
+        "proportion": 0.32741
       },
       {
-        "hex": "#363b39",
-        "proportion": 0.232
+        "hex": "#cec9c3",
+        "proportion": 0.293499
       },
       {
-        "hex": "#9d9987",
-        "proportion": 0.177
+        "hex": "#333637",
+        "proportion": 0.224105
       },
       {
-        "hex": "#bebfaf",
-        "proportion": 0.175
+        "hex": "#909a67",
+        "proportion": 0.131928
       },
       {
-        "hex": "#eae2d8",
-        "proportion": 0.121
+        "hex": "#cf8a9b",
+        "proportion": 0.023058
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3459928447,
+      "maxIterations": 40,
+      "sourceSha256": "00d7ec8f535a04eec5811e3d6670a1c141084545309028e3be76022b71806b7d"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -546,27 +672,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#313512",
-        "proportion": 0.28
+        "hex": "#bfc5d2",
+        "proportion": 0.359228
       },
       {
-        "hex": "#bcbfca",
-        "proportion": 0.256
+        "hex": "#2f3311",
+        "proportion": 0.225455
       },
       {
-        "hex": "#716937",
-        "proportion": 0.202
+        "hex": "#6e662a",
+        "proportion": 0.200028
       },
       {
-        "hex": "#eedcc4",
-        "proportion": 0.138
+        "hex": "#fad4a9",
+        "proportion": 0.166033
       },
       {
-        "hex": "#dccfbf",
-        "proportion": 0.123
+        "hex": "#515045",
+        "proportion": 0.049256
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 956141031,
+      "maxIterations": 40,
+      "sourceSha256": "a43688fd9e90f02006af5ed115a908f7651bf12d4ca50b2ae12ac1c2e0ad3940"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -584,27 +719,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#75746b",
-        "proportion": 0.315
+        "hex": "#636462",
+        "proportion": 0.254683
       },
       {
-        "hex": "#bad7f7",
-        "proportion": 0.267
+        "hex": "#a8cdfc",
+        "proportion": 0.222342
       },
       {
-        "hex": "#333536",
-        "proportion": 0.227
+        "hex": "#c8dbef",
+        "proportion": 0.213636
       },
       {
-        "hex": "#cbe3fa",
-        "proportion": 0.122
+        "hex": "#26272a",
+        "proportion": 0.160386
       },
       {
-        "hex": "#a3bad4",
-        "proportion": 0.069
+        "hex": "#8f8971",
+        "proportion": 0.148953
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2461980016,
+      "maxIterations": 40,
+      "sourceSha256": "e91236cf90b208afeb549bc0bcab3e27bbe8b5fcaae9140fede01f53ab7920d3"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -622,27 +766,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#818074",
-        "proportion": 0.25
+        "hex": "#bdb8b6",
+        "proportion": 0.303333
       },
       {
-        "hex": "#4e534b",
-        "proportion": 0.229
+        "hex": "#848681",
+        "proportion": 0.278926
       },
       {
-        "hex": "#9f9d93",
-        "proportion": 0.225
+        "hex": "#435047",
+        "proportion": 0.216694
       },
       {
-        "hex": "#b2b1a6",
-        "proportion": 0.179
+        "hex": "#8a9e79",
+        "proportion": 0.127383
       },
       {
-        "hex": "#ccccc6",
-        "proportion": 0.117
+        "hex": "#b97a6b",
+        "proportion": 0.073664
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 140427761,
+      "maxIterations": 40,
+      "sourceSha256": "269bab18fccb02feb65c0b97456175dbe42e6b05ef216b34c7816123ece19129"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -660,27 +813,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#bbc0c4",
-        "proportion": 0.247
+        "hex": "#a2a4a5",
+        "proportion": 0.329532
       },
       {
-        "hex": "#919695",
-        "proportion": 0.229
+        "hex": "#6d6e69",
+        "proportion": 0.226501
       },
       {
-        "hex": "#26312c",
-        "proportion": 0.22
+        "hex": "#3a4936",
+        "proportion": 0.164022
       },
       {
-        "hex": "#666d66",
-        "proportion": 0.155
+        "hex": "#242729",
+        "proportion": 0.161267
       },
       {
-        "hex": "#55514a",
-        "proportion": 0.149
+        "hex": "#c9d2d9",
+        "proportion": 0.118678
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1810204822,
+      "maxIterations": 40,
+      "sourceSha256": "ce672217b5ef2c514bd024d2906b23893ad0c59098e382321edc37932fbbaf46"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -698,27 +860,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#83908f",
-        "proportion": 0.281
+        "hex": "#85918a",
+        "proportion": 0.284655
       },
       {
-        "hex": "#394035",
-        "proportion": 0.226
+        "hex": "#a1a9bc",
+        "proportion": 0.229614
       },
       {
-        "hex": "#9aa9bd",
-        "proportion": 0.197
+        "hex": "#353b2f",
+        "proportion": 0.222645
       },
       {
-        "hex": "#b1c0db",
-        "proportion": 0.187
+        "hex": "#d0d8e7",
+        "proportion": 0.166171
       },
       {
-        "hex": "#d5ddec",
-        "proportion": 0.109
+        "hex": "#9bb7ed",
+        "proportion": 0.096915
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1004206052,
+      "maxIterations": 40,
+      "sourceSha256": "d3b851649c5e42171c1f4c4a8bf9fe910038fcc8369978c457e35c8c135b67ee"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -736,27 +907,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#dbcfc1",
-        "proportion": 0.264
+        "hex": "#cec4b8",
+        "proportion": 0.357796
       },
       {
-        "hex": "#555250",
-        "proportion": 0.222
+        "hex": "#8abefd",
+        "proportion": 0.20405
       },
       {
-        "hex": "#afc8e0",
-        "proportion": 0.219
+        "hex": "#817b75",
+        "proportion": 0.177548
       },
       {
-        "hex": "#9babbf",
-        "proportion": 0.163
+        "hex": "#d9e6f2",
+        "proportion": 0.14157
       },
       {
-        "hex": "#e4e8ea",
-        "proportion": 0.132
+        "hex": "#333334",
+        "proportion": 0.119036
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3186513725,
+      "maxIterations": 40,
+      "sourceSha256": "8c2d2e71af9b51296ca9cc8047851e645e257bdb4d0b1b63e76e42ed593d0611"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -774,27 +954,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#080706",
-        "proportion": 0.279
+        "hex": "#0d0c0a",
+        "proportion": 0.424892
       },
       {
-        "hex": "#171512",
-        "proportion": 0.239
+        "hex": "#2b2521",
+        "proportion": 0.235838
       },
       {
-        "hex": "#36312c",
-        "proportion": 0.211
+        "hex": "#7a726b",
+        "proportion": 0.142733
       },
       {
-        "hex": "#665f59",
-        "proportion": 0.161
+        "hex": "#504944",
+        "proportion": 0.141497
       },
       {
-        "hex": "#928c85",
-        "proportion": 0.11
+        "hex": "#a8a49b",
+        "proportion": 0.05504
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2252112989,
+      "maxIterations": 40,
+      "sourceSha256": "65655387ed9a1407798388dd7996e69b45321a45a07f1005c548579f567dfbea"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -812,27 +1001,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#1f1710",
-        "proportion": 0.262
+        "hex": "#0f0a08",
+        "proportion": 0.650278
       },
       {
-        "hex": "#030302",
-        "proportion": 0.215
+        "hex": "#35291d",
+        "proportion": 0.166883
       },
       {
-        "hex": "#726656",
-        "proportion": 0.192
+        "hex": "#7f5e3d",
+        "proportion": 0.077273
       },
       {
-        "hex": "#080604",
-        "proportion": 0.179
+        "hex": "#646d77",
+        "proportion": 0.060668
       },
       {
-        "hex": "#140805",
-        "proportion": 0.152
+        "hex": "#cabb9b",
+        "proportion": 0.044898
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3535139383,
+      "maxIterations": 40,
+      "sourceSha256": "ff4c3205860c704c692c27fb310cf71e75b07e91a90b2d7db2d1a1d96460d41b"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -850,27 +1048,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#6a5e5b",
-        "proportion": 0.249
+        "hex": "#9c9796",
+        "proportion": 0.280736
       },
       {
-        "hex": "#8f8a88",
-        "proportion": 0.248
+        "hex": "#756b68",
+        "proportion": 0.242703
       },
       {
-        "hex": "#2c2a29",
-        "proportion": 0.243
+        "hex": "#4a4240",
+        "proportion": 0.175665
       },
       {
-        "hex": "#adafaf",
-        "proportion": 0.141
+        "hex": "#d0d1d3",
+        "proportion": 0.159709
       },
       {
-        "hex": "#d6d2d5",
-        "proportion": 0.119
+        "hex": "#1f1b1a",
+        "proportion": 0.141187
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2398166062,
+      "maxIterations": 40,
+      "sourceSha256": "097a4a94dcd322ca1e3aa9efd2d4671e367f61cef19cc323ac3b08d098254815"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -888,27 +1095,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#16181c",
-        "proportion": 0.253
+        "hex": "#a59f9a",
+        "proportion": 0.407544
       },
       {
-        "hex": "#4c423c",
-        "proportion": 0.246
+        "hex": "#181a1d",
+        "proportion": 0.255968
       },
       {
-        "hex": "#a79f98",
-        "proportion": 0.205
+        "hex": "#4a3c2e",
+        "proportion": 0.163575
       },
       {
-        "hex": "#89847e",
-        "proportion": 0.189
+        "hex": "#5b6169",
+        "proportion": 0.135838
       },
       {
-        "hex": "#b9b5b0",
-        "proportion": 0.108
+        "hex": "#b7885b",
+        "proportion": 0.037075
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 146575877,
+      "maxIterations": 40,
+      "sourceSha256": "5f84593416c73a98ecc5f125f68af3ac91e11d8f692e7c9a520206151fe4e681"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -926,27 +1142,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#72706e",
-        "proportion": 0.262
+        "hex": "#aeadac",
+        "proportion": 0.392486
       },
       {
-        "hex": "#2e2e2e",
-        "proportion": 0.23
+        "hex": "#7d7c7d",
+        "proportion": 0.268027
       },
       {
-        "hex": "#9a978f",
-        "proportion": 0.217
+        "hex": "#4a4949",
+        "proportion": 0.165275
       },
       {
-        "hex": "#aeaba1",
-        "proportion": 0.182
+        "hex": "#1b1b1b",
+        "proportion": 0.129716
       },
       {
-        "hex": "#c3c0b8",
-        "proportion": 0.11
+        "hex": "#b2992f",
+        "proportion": 0.044496
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 4226149898,
+      "maxIterations": 40,
+      "sourceSha256": "080325f3a450d3b32877a278d82d5b714f35f98ca2af957bc036238a572d1b5d"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -964,27 +1189,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#121111",
-        "proportion": 0.256
+        "hex": "#1e1b1b",
+        "proportion": 0.424428
       },
       {
-        "hex": "#382520",
-        "proportion": 0.244
+        "hex": "#575453",
+        "proportion": 0.290445
       },
       {
-        "hex": "#57453e",
-        "proportion": 0.231
+        "hex": "#9f9a98",
+        "proportion": 0.124923
       },
       {
-        "hex": "#746a65",
-        "proportion": 0.18
+        "hex": "#573022",
+        "proportion": 0.111039
       },
       {
-        "hex": "#a29c9a",
-        "proportion": 0.089
+        "hex": "#ab512d",
+        "proportion": 0.049165
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3503485632,
+      "maxIterations": 40,
+      "sourceSha256": "264b70d5e3eed801f44c47d9d2853b318f518839d732ac5462e429b833b53790"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1002,27 +1236,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#2f2d31",
-        "proportion": 0.27
+        "hex": "#181616",
+        "proportion": 0.300898
       },
       {
-        "hex": "#111419",
-        "proportion": 0.264
+        "hex": "#d3d3d3",
+        "proportion": 0.214007
       },
       {
-        "hex": "#686668",
-        "proportion": 0.189
+        "hex": "#4d4641",
+        "proportion": 0.206555
       },
       {
-        "hex": "#b7b6b5",
-        "proportion": 0.148
+        "hex": "#948c88",
+        "proportion": 0.140105
       },
       {
-        "hex": "#e0e1e0",
-        "proportion": 0.129
+        "hex": "#263754",
+        "proportion": 0.138435
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 784052390,
+      "maxIterations": 40,
+      "sourceSha256": "6c8438c6ae2696a9f6f4dbe66939471b4f50c630d4bcb8f1d72a3dc17697a32a"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1040,27 +1283,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#090b0b",
-        "proportion": 0.284
+        "hex": "#151515",
+        "proportion": 0.356834
       },
       {
-        "hex": "#66849b",
-        "proportion": 0.22
+        "hex": "#c3c1c1",
+        "proportion": 0.311379
       },
       {
-        "hex": "#3a3b3c",
-        "proportion": 0.204
+        "hex": "#575a5c",
+        "proportion": 0.203834
       },
       {
-        "hex": "#b8b7b6",
-        "proportion": 0.157
+        "hex": "#2c81c0",
+        "proportion": 0.10167
       },
       {
-        "hex": "#dfdfdf",
-        "proportion": 0.134
+        "hex": "#9d5f5a",
+        "proportion": 0.026283
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 547182778,
+      "maxIterations": 40,
+      "sourceSha256": "645aa2eeb5933f70dda975fa7f85b4e094c2fcfdbccc50024f7025cb6bac0c85"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1078,27 +1330,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#261c14",
-        "proportion": 0.263
+        "hex": "#100c08",
+        "proportion": 0.329468
       },
       {
-        "hex": "#0a0907",
-        "proportion": 0.262
+        "hex": "#332920",
+        "proportion": 0.301701
       },
       {
-        "hex": "#715c44",
-        "proportion": 0.198
+        "hex": "#69543d",
+        "proportion": 0.255659
       },
       {
-        "hex": "#4b3b2b",
-        "proportion": 0.184
+        "hex": "#b08960",
+        "proportion": 0.059771
       },
       {
-        "hex": "#b3a18b",
-        "proportion": 0.092
+        "hex": "#c9c5bf",
+        "proportion": 0.053401
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2230010385,
+      "maxIterations": 40,
+      "sourceSha256": "18515eaa07a622bc21f5c416c3bf836b2caf4cab1c7c8280c2d0685974ef4c63"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1116,27 +1377,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#130b08",
-        "proportion": 0.301
+        "hex": "#160d0a",
+        "proportion": 0.260947
       },
       {
-        "hex": "#581717",
-        "proportion": 0.234
+        "hex": "#c94452",
+        "proportion": 0.202072
       },
       {
-        "hex": "#8a3638",
-        "proportion": 0.185
+        "hex": "#41231d",
+        "proportion": 0.191156
       },
       {
-        "hex": "#b36771",
-        "proportion": 0.146
+        "hex": "#732722",
+        "proportion": 0.180643
       },
       {
-        "hex": "#b7acb4",
-        "proportion": 0.135
+        "hex": "#aca1a9",
+        "proportion": 0.165182
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3246409857,
+      "maxIterations": 40,
+      "sourceSha256": "e98ccc1e33db1e0737818ba082f923ec5fb62e7fe2659cea573eca86e99b2da7"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1154,27 +1424,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#ced7df",
-        "proportion": 0.248
+        "hex": "#ced7e0",
+        "proportion": 0.250991
       },
       {
-        "hex": "#8c9193",
-        "proportion": 0.226
+        "hex": "#898f99",
+        "proportion": 0.249587
       },
       {
-        "hex": "#3c4945",
-        "proportion": 0.209
+        "hex": "#4f565e",
+        "proportion": 0.177328
       },
       {
-        "hex": "#576256",
-        "proportion": 0.163
+        "hex": "#687254",
+        "proportion": 0.167934
       },
       {
-        "hex": "#6b726a",
-        "proportion": 0.154
+        "hex": "#3a483c",
+        "proportion": 0.15416
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2657944537,
+      "maxIterations": 40,
+      "sourceSha256": "542964dc9f8f503692933ade440d63cd1def81fb4a070b63f990d55e29952615"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1192,27 +1471,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#1a1515",
-        "proportion": 0.281
+        "hex": "#1e1919",
+        "proportion": 0.329559
       },
       {
-        "hex": "#6c584b",
-        "proportion": 0.222
+        "hex": "#7b6c5f",
+        "proportion": 0.248237
       },
       {
-        "hex": "#402f29",
-        "proportion": 0.219
+        "hex": "#4b3c32",
+        "proportion": 0.245702
       },
       {
-        "hex": "#937964",
-        "proportion": 0.161
+        "hex": "#bca386",
+        "proportion": 0.111433
       },
       {
-        "hex": "#bea284",
-        "proportion": 0.117
+        "hex": "#be6c43",
+        "proportion": 0.065069
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 857605983,
+      "maxIterations": 40,
+      "sourceSha256": "bfb12dd149b8b2796b44b4706e436156416cf9ef26be5b256167d46fbfd83e2c"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1230,27 +1518,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#4a4c2c",
-        "proportion": 0.274
+        "hex": "#171716",
+        "proportion": 0.307482
       },
       {
-        "hex": "#2c2f1f",
-        "proportion": 0.248
+        "hex": "#4f5226",
+        "proportion": 0.253309
       },
       {
-        "hex": "#12120e",
-        "proportion": 0.246
+        "hex": "#393825",
+        "proportion": 0.240538
       },
       {
-        "hex": "#c1cedd",
-        "proportion": 0.142
+        "hex": "#cad2dd",
+        "proportion": 0.118615
       },
       {
-        "hex": "#6c7366",
-        "proportion": 0.089
+        "hex": "#7385a0",
+        "proportion": 0.080056
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1479318600,
+      "maxIterations": 40,
+      "sourceSha256": "c562b878ce5af826dc69e96180d0a6b9573265b9773bcddce55d83634c37ddd3"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1268,27 +1565,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#75583b",
-        "proportion": 0.272
+        "hex": "#724e23",
+        "proportion": 0.28281
       },
       {
-        "hex": "#2a1d14",
-        "proportion": 0.24
+        "hex": "#2d1f16",
+        "proportion": 0.273636
       },
       {
-        "hex": "#593c21",
-        "proportion": 0.238
+        "hex": "#604c3f",
+        "proportion": 0.20551
       },
       {
-        "hex": "#8c7a65",
-        "proportion": 0.131
+        "hex": "#908379",
+        "proportion": 0.145372
       },
       {
-        "hex": "#b4b3b0",
-        "proportion": 0.119
+        "hex": "#bebec0",
+        "proportion": 0.092672
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 687671524,
+      "maxIterations": 40,
+      "sourceSha256": "5f59b8b4265894e760e0c63ed9d14c0d2ce2e3771f19cc9f10cccf4968fecc87"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1306,27 +1612,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#2a3436",
-        "proportion": 0.279
+        "hex": "#879145",
+        "proportion": 0.296694
       },
       {
-        "hex": "#6f774c",
-        "proportion": 0.215
+        "hex": "#2e3738",
+        "proportion": 0.283912
       },
       {
-        "hex": "#90976e",
-        "proportion": 0.197
+        "hex": "#9399ac",
+        "proportion": 0.162645
       },
       {
-        "hex": "#a1a680",
-        "proportion": 0.176
+        "hex": "#8c8b65",
+        "proportion": 0.150496
       },
       {
-        "hex": "#c9d2dc",
-        "proportion": 0.133
+        "hex": "#d0d9ea",
+        "proportion": 0.106253
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 4241348387,
+      "maxIterations": 40,
+      "sourceSha256": "94317fda9bd8c93f3f561f9a30d83c5ef28675d17653379001695c43cd12b5ee"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1344,27 +1659,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#687d4f",
-        "proportion": 0.257
+        "hex": "#cad4e1",
+        "proportion": 0.315565
       },
       {
-        "hex": "#506249",
-        "proportion": 0.245
+        "hex": "#637b3e",
+        "proportion": 0.227493
       },
       {
-        "hex": "#c5d0de",
-        "proportion": 0.196
+        "hex": "#5a6868",
+        "proportion": 0.186501
       },
       {
-        "hex": "#aab8c3",
-        "proportion": 0.18
+        "hex": "#a6b2c1",
+        "proportion": 0.182755
       },
       {
-        "hex": "#d4dee9",
-        "proportion": 0.122
+        "hex": "#4c5f30",
+        "proportion": 0.087686
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3323488204,
+      "maxIterations": 40,
+      "sourceSha256": "ebde15d958f7c937158b18a24df586dcef2b8e05fac83ebb34b8b7d26981fa2b"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1382,27 +1706,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#4e555f",
-        "proportion": 0.258
+        "hex": "#4a515b",
+        "proportion": 0.275856
       },
       {
-        "hex": "#e3ecf6",
-        "proportion": 0.256
+        "hex": "#a1badc",
+        "proportion": 0.263046
       },
       {
-        "hex": "#a5bddc",
-        "proportion": 0.254
+        "hex": "#e5ecf5",
+        "proportion": 0.259298
       },
       {
-        "hex": "#373d49",
-        "proportion": 0.153
+        "hex": "#2b2e3c",
+        "proportion": 0.119008
       },
       {
-        "hex": "#5f7683",
-        "proportion": 0.08
+        "hex": "#657a81",
+        "proportion": 0.082792
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 134266237,
+      "maxIterations": 40,
+      "sourceSha256": "924d830ef4abbcefa498e922704c51524da9b218f677e39fe8053d2fec141aa1"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1420,27 +1753,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#7494c2",
-        "proportion": 0.295
+        "hex": "#465637",
+        "proportion": 0.330582
       },
       {
-        "hex": "#405034",
-        "proportion": 0.295
+        "hex": "#728063",
+        "proportion": 0.292424
       },
       {
-        "hex": "#576e6d",
-        "proportion": 0.271
+        "hex": "#547ce3",
+        "proportion": 0.187786
       },
       {
-        "hex": "#bac8d9",
-        "proportion": 0.082
+        "hex": "#d3d5d6",
+        "proportion": 0.094743
       },
       {
-        "hex": "#6581a0",
-        "proportion": 0.057
+        "hex": "#6a9af9",
+        "proportion": 0.094465
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 723293569,
+      "maxIterations": 40,
+      "sourceSha256": "ce5f312eff98824f4bd98eff01dfb2a98d5cd20e6315311b8bb3f2922c8f219a"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1458,27 +1800,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#707b50",
-        "proportion": 0.354
+        "hex": "#727851",
+        "proportion": 0.294805
       },
       {
-        "hex": "#7f9056",
-        "proportion": 0.214
+        "hex": "#758c3b",
+        "proportion": 0.249722
       },
       {
-        "hex": "#8bc9f9",
-        "proportion": 0.197
+        "hex": "#7bc3fc",
+        "proportion": 0.191373
       },
       {
-        "hex": "#4b564b",
-        "proportion": 0.163
+        "hex": "#90959e",
+        "proportion": 0.137879
       },
       {
-        "hex": "#83b3cb",
-        "proportion": 0.072
+        "hex": "#394651",
+        "proportion": 0.126221
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1909303447,
+      "maxIterations": 40,
+      "sourceSha256": "7fe213c0d007d7efb118129bec49cb270466ceb66f6e55c8d417d1eda258f981"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1496,27 +1847,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#74795f",
-        "proportion": 0.279
+        "hex": "#a7a9b1",
+        "proportion": 0.307315
       },
       {
-        "hex": "#2f312c",
-        "proportion": 0.22
+        "hex": "#879062",
+        "proportion": 0.245922
       },
       {
-        "hex": "#9aa3a2",
-        "proportion": 0.204
+        "hex": "#828372",
+        "proportion": 0.155791
       },
       {
-        "hex": "#8f957e",
-        "proportion": 0.185
+        "hex": "#505245",
+        "proportion": 0.146669
       },
       {
-        "hex": "#bcb9b6",
-        "proportion": 0.112
+        "hex": "#1d1e1e",
+        "proportion": 0.144303
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3172360136,
+      "maxIterations": 40,
+      "sourceSha256": "3b90961028e613d9a41509ea8dd8bb74988f81ee1841cc77e27f2846a23b52b5"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1534,27 +1894,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#888581",
-        "proportion": 0.3
+        "hex": "#dbe1e4",
+        "proportion": 0.333003
       },
       {
-        "hex": "#43414a",
-        "proportion": 0.223
+        "hex": "#9d9c98",
+        "proportion": 0.288843
       },
       {
-        "hex": "#d9e0e3",
-        "proportion": 0.197
+        "hex": "#383b46",
+        "proportion": 0.195455
       },
       {
-        "hex": "#b0b1ad",
-        "proportion": 0.154
+        "hex": "#767574",
+        "proportion": 0.153333
       },
       {
-        "hex": "#dfe4e7",
-        "proportion": 0.126
+        "hex": "#a15f51",
+        "proportion": 0.029366
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3200315485,
+      "maxIterations": 40,
+      "sourceSha256": "a2f79cb1b493c5fa1b1707387fb3075901a0d3720ae59d4b2aaaed89dd3938f0"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1572,27 +1941,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#87756a",
-        "proportion": 0.282
+        "hex": "#695950",
+        "proportion": 0.332066
       },
       {
-        "hex": "#70534a",
-        "proportion": 0.265
+        "hex": "#958378",
+        "proportion": 0.250028
       },
       {
-        "hex": "#423731",
-        "proportion": 0.228
+        "hex": "#3d312c",
+        "proportion": 0.206777
       },
       {
-        "hex": "#e7edf0",
-        "proportion": 0.161
+        "hex": "#dfe3e5",
+        "proportion": 0.185592
       },
       {
-        "hex": "#b8afab",
-        "proportion": 0.064
+        "hex": "#af362d",
+        "proportion": 0.025537
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 878795971,
+      "maxIterations": 40,
+      "sourceSha256": "a8b5a64d81c2d56f5ea98a41bb57e7ef783068b7e1c358ad2b93d128faf04c7e"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1610,27 +1988,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#2c2b2c",
-        "proportion": 0.245
+        "hex": "#90897e",
+        "proportion": 0.419477
       },
       {
-        "hex": "#8b524b",
-        "proportion": 0.244
+        "hex": "#322d2d",
+        "proportion": 0.287355
       },
       {
-        "hex": "#988b7e",
-        "proportion": 0.219
+        "hex": "#e9eae3",
+        "proportion": 0.137741
       },
       {
-        "hex": "#b8b09b",
-        "proportion": 0.174
+        "hex": "#bb4943",
+        "proportion": 0.115289
       },
       {
-        "hex": "#efefe2",
-        "proportion": 0.119
+        "hex": "#d6b266",
+        "proportion": 0.040138
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2559780428,
+      "maxIterations": 40,
+      "sourceSha256": "c3c5ff7883f17e765d59e9a6f2d8dd8de620ff75a259e9d956c9cdab1e095c82"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1648,27 +2035,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#959490",
-        "proportion": 0.378
+        "hex": "#95938f",
+        "proportion": 0.39
       },
       {
-        "hex": "#d4dbe1",
-        "proportion": 0.261
+        "hex": "#d8e0e7",
+        "proportion": 0.259366
       },
       {
-        "hex": "#4b3a3d",
-        "proportion": 0.195
+        "hex": "#cbcfd4",
+        "proportion": 0.165014
       },
       {
-        "hex": "#dce4eb",
-        "proportion": 0.111
+        "hex": "#32272b",
+        "proportion": 0.15438
       },
       {
-        "hex": "#bdc1c2",
-        "proportion": 0.055
+        "hex": "#6c252b",
+        "proportion": 0.03124
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3761776714,
+      "maxIterations": 40,
+      "sourceSha256": "1cfeb7bba70e696cb4ebf1e353daad59e4d44459c6a123211a1a16c42351d36a"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1686,27 +2082,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#7a7a78",
-        "proportion": 0.292
+        "hex": "#d0d7da",
+        "proportion": 0.433305
       },
       {
-        "hex": "#4a4b50",
-        "proportion": 0.244
+        "hex": "#7b7a78",
+        "proportion": 0.17686
       },
       {
-        "hex": "#d1dade",
-        "proportion": 0.237
+        "hex": "#5b5a5c",
+        "proportion": 0.15989
       },
       {
-        "hex": "#d8e0e3",
-        "proportion": 0.132
+        "hex": "#3a3e45",
+        "proportion": 0.126777
       },
       {
-        "hex": "#bcc0c0",
-        "proportion": 0.095
+        "hex": "#989896",
+        "proportion": 0.103168
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2925116027,
+      "maxIterations": 40,
+      "sourceSha256": "9eb9fef917f15732604a8e7985922836592cf5e19c783c906afbd986cd574c9f"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1724,27 +2129,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#6d6a61",
-        "proportion": 0.28
+        "hex": "#585754",
+        "proportion": 0.252699
       },
       {
-        "hex": "#454543",
-        "proportion": 0.223
+        "hex": "#7c7669",
+        "proportion": 0.24686
       },
       {
-        "hex": "#928b7e",
-        "proportion": 0.212
+        "hex": "#a39b8c",
+        "proportion": 0.243554
       },
       {
-        "hex": "#b1a797",
-        "proportion": 0.172
+        "hex": "#cdc0ad",
+        "proportion": 0.158402
       },
       {
-        "hex": "#cfc4b2",
-        "proportion": 0.112
+        "hex": "#313234",
+        "proportion": 0.098485
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1029880678,
+      "maxIterations": 40,
+      "sourceSha256": "e93c49e2650cc33be2b5dee3f48cb9bf1a537a8f1da8d74dc7b3bdadb1bbc358"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1762,27 +2176,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#6a737e",
-        "proportion": 0.305
+        "hex": "#75787c",
+        "proportion": 0.305178
       },
       {
-        "hex": "#828992",
-        "proportion": 0.213
+        "hex": "#a2a5a9",
+        "proportion": 0.254298
       },
       {
-        "hex": "#505964",
-        "proportion": 0.211
+        "hex": "#63748b",
+        "proportion": 0.219862
       },
       {
-        "hex": "#a0a3a7",
-        "proportion": 0.181
+        "hex": "#495059",
+        "proportion": 0.152287
       },
       {
-        "hex": "#d1d4d7",
-        "proportion": 0.089
+        "hex": "#e8ecf0",
+        "proportion": 0.068375
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 3923174252,
+      "maxIterations": 40,
+      "sourceSha256": "09ff778d9ba27b0dcd1aeebc77c81bbd77391d65022a759e983cf959d558b4b0"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1800,27 +2223,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#70625b",
-        "proportion": 0.273
+        "hex": "#887971",
+        "proportion": 0.365977
       },
       {
-        "hex": "#887a71",
-        "proportion": 0.242
+        "hex": "#62554f",
+        "proportion": 0.303444
       },
       {
-        "hex": "#4a3f3b",
-        "proportion": 0.213
+        "hex": "#b9a596",
+        "proportion": 0.171956
       },
       {
-        "hex": "#a29287",
-        "proportion": 0.176
+        "hex": "#372e2d",
+        "proportion": 0.112755
       },
       {
-        "hex": "#cfc4bc",
-        "proportion": 0.096
+        "hex": "#e2ebf3",
+        "proportion": 0.045868
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 2324320752,
+      "maxIterations": 40,
+      "sourceSha256": "54fd664fb3bec3916eb6b6af3eebe39cca9b514cf5b8ca1dcaeb495493573ced"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1838,27 +2270,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#e6e8e7",
-        "proportion": 0.25
+        "hex": "#e8e9e8",
+        "proportion": 0.237107
       },
       {
-        "hex": "#a4a4a4",
-        "proportion": 0.23
+        "hex": "#ababab",
+        "proportion": 0.223664
       },
       {
-        "hex": "#332e32",
-        "proportion": 0.212
+        "hex": "#4e494d",
+        "proportion": 0.221736
       },
       {
-        "hex": "#565960",
-        "proportion": 0.165
+        "hex": "#797879",
+        "proportion": 0.193306
       },
       {
-        "hex": "#787473",
-        "proportion": 0.143
+        "hex": "#221f22",
+        "proportion": 0.124187
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1494579814,
+      "maxIterations": 40,
+      "sourceSha256": "3317640b750b6776d7673c22cc60ddf626f8f7fa2edb7bbbc602465d8d3ffacd"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   },
   {
@@ -1876,27 +2317,36 @@
     ],
     "dominantColors": [
       {
-        "hex": "#5f6b7a",
-        "proportion": 0.329
+        "hex": "#5e6b7d",
+        "proportion": 0.314244
       },
       {
-        "hex": "#49515c",
-        "proportion": 0.213
+        "hex": "#474e57",
+        "proportion": 0.211928
       },
       {
-        "hex": "#81858c",
-        "proportion": 0.193
+        "hex": "#818286",
+        "proportion": 0.185702
       },
       {
-        "hex": "#e9eff1",
-        "proportion": 0.136
+        "hex": "#e6ecee",
+        "proportion": 0.146253
       },
       {
-        "hex": "#b7b8b1",
-        "proportion": 0.128
+        "hex": "#b0aea8",
+        "proportion": 0.141873
       }
     ],
-    "colorMetrics": {},
+    "colorMetrics": {
+      "method": "cielab-kmeans-v1",
+      "colorSpace": "CIELAB D65",
+      "clusters": 5,
+      "resizeMaxPx": 220,
+      "maxSampledPixels": 30000,
+      "seed": 1624537038,
+      "maxIterations": 40,
+      "sourceSha256": "b61518dc4d0a9dad5a43b1edd76cf7b51e768e69f2029255e59dec2df5c4b96f"
+    },
     "notes": "Category and descriptive metadata are placeholders for this preview."
   }
 ]

@@ -129,6 +129,73 @@ function hexToRgb(hex) {
   };
 }
 
+function hexToCielab(hex) {
+  const rgb = hexToRgb(hex);
+  const r = toLinear(rgb.r);
+  const g = toLinear(rgb.g);
+  const b = toLinear(rgb.b);
+  const x = (0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / 0.95047;
+  const y = (0.2126729 * r + 0.7151522 * g + 0.0721750 * b);
+  const z = (0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / 1.08883;
+  const transform = function (value) {
+    return value > 216 / 24389 ? Math.cbrt(value) : (841 / 108) * value + 4 / 29;
+  };
+  const fx = transform(x);
+  const fy = transform(y);
+  const fz = transform(z);
+  return { L: 116 * fy - 16, a: 500 * (fx - fy), b: 200 * (fy - fz) };
+}
+
+function deltaE2000(first, second) {
+  const radians = function (degrees) { return degrees * Math.PI / 180; };
+  const degrees = function (angle) { return angle * 180 / Math.PI; };
+  const c1 = Math.sqrt(first.a * first.a + first.b * first.b);
+  const c2 = Math.sqrt(second.a * second.a + second.b * second.b);
+  const meanC = (c1 + c2) / 2;
+  const g = 0.5 * (1 - Math.sqrt(Math.pow(meanC, 7) / (Math.pow(meanC, 7) + Math.pow(25, 7))));
+  const a1Prime = (1 + g) * first.a;
+  const a2Prime = (1 + g) * second.a;
+  const c1Prime = Math.sqrt(a1Prime * a1Prime + first.b * first.b);
+  const c2Prime = Math.sqrt(a2Prime * a2Prime + second.b * second.b);
+  const hue = function (a, bValue) {
+    if (a === 0 && bValue === 0) return 0;
+    const value = degrees(Math.atan2(bValue, a));
+    return value >= 0 ? value : value + 360;
+  };
+  const h1Prime = hue(a1Prime, first.b);
+  const h2Prime = hue(a2Prime, second.b);
+  const deltaLPrime = second.L - first.L;
+  const deltaCPrime = c2Prime - c1Prime;
+  let deltaH = h2Prime - h1Prime;
+  if (c1Prime * c2Prime === 0) deltaH = 0;
+  else if (deltaH > 180) deltaH -= 360;
+  else if (deltaH < -180) deltaH += 360;
+  const deltaHPrime = 2 * Math.sqrt(c1Prime * c2Prime) * Math.sin(radians(deltaH / 2));
+  const meanLPrime = (first.L + second.L) / 2;
+  const meanCPrime = (c1Prime + c2Prime) / 2;
+  let meanHPrime = h1Prime + h2Prime;
+  if (c1Prime * c2Prime === 0) meanHPrime = h1Prime + h2Prime;
+  else if (Math.abs(h1Prime - h2Prime) <= 180) meanHPrime /= 2;
+  else if (meanHPrime < 360) meanHPrime = (meanHPrime + 360) / 2;
+  else meanHPrime = (meanHPrime - 360) / 2;
+  const t = 1 - 0.17 * Math.cos(radians(meanHPrime - 30)) +
+    0.24 * Math.cos(radians(2 * meanHPrime)) +
+    0.32 * Math.cos(radians(3 * meanHPrime + 6)) -
+    0.20 * Math.cos(radians(4 * meanHPrime - 63));
+  const deltaTheta = 30 * Math.exp(-Math.pow((meanHPrime - 275) / 25, 2));
+  const rc = 2 * Math.sqrt(Math.pow(meanCPrime, 7) /
+    (Math.pow(meanCPrime, 7) + Math.pow(25, 7)));
+  const sl = 1 + (0.015 * Math.pow(meanLPrime - 50, 2)) /
+    Math.sqrt(20 + Math.pow(meanLPrime - 50, 2));
+  const sc = 1 + 0.045 * meanCPrime;
+  const sh = 1 + 0.015 * meanCPrime * t;
+  const rt = -Math.sin(radians(2 * deltaTheta)) * rc;
+  const lTerm = deltaLPrime / sl;
+  const cTerm = deltaCPrime / sc;
+  const hTerm = deltaHPrime / sh;
+  return Math.sqrt(lTerm * lTerm + cTerm * cTerm + hTerm * hTerm + rt * cTerm * hTerm);
+}
+
 function toLinear(value) {
   return value <= 0.04045 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
 }
@@ -204,6 +271,133 @@ function themedEntries(photo, mode) {
   }).sort(function (a, b) { return b.proportion - a.proportion; });
 }
 
+function representativePalette(photos, mode, size) {
+  const points = [];
+  const divisor = Math.max(photos.length, 1);
+  photos.forEach(function (photo) {
+    themedEntries(photo, mode || "representative").forEach(function (entry) {
+      points.push({
+        hex: entry.hex,
+        lab: hexToCielab(entry.hex),
+        weight: entry.proportion / divisor
+      });
+    });
+  });
+  if (!points.length) return [];
+  if (photos.length === 1) {
+    return points.map(function (point) {
+      return { hex: point.hex, lab: point.lab, proportion: point.weight };
+    });
+  }
+
+  const target = Math.min(size || 5, points.length);
+  const squaredDistance = function (first, second) {
+    return Math.pow(first.L - second.L, 2) + Math.pow(first.a - second.a, 2) + Math.pow(first.b - second.b, 2);
+  };
+  const centers = [points.slice().sort(function (a, b) { return b.weight - a.weight; })[0].lab];
+  while (centers.length < target) {
+    const next = points.slice().sort(function (a, b) {
+      const distanceA = Math.min.apply(null, centers.map(function (center) { return squaredDistance(a.lab, center); }));
+      const distanceB = Math.min.apply(null, centers.map(function (center) { return squaredDistance(b.lab, center); }));
+      return distanceB * b.weight - distanceA * a.weight;
+    })[0];
+    centers.push({ L: next.lab.L, a: next.lab.a, b: next.lab.b });
+  }
+
+  let assignments = [];
+  for (let iteration = 0; iteration < 18; iteration += 1) {
+    assignments = points.map(function (point) {
+      let best = 0;
+      let bestDistance = Infinity;
+      centers.forEach(function (center, index) {
+        const distance = squaredDistance(point.lab, center);
+        if (distance < bestDistance) {
+          best = index;
+          bestDistance = distance;
+        }
+      });
+      return best;
+    });
+    centers.forEach(function (center, index) {
+      const members = points.filter(function (_point, pointIndex) { return assignments[pointIndex] === index; });
+      const total = members.reduce(function (sum, member) { return sum + member.weight; }, 0);
+      if (!total) return;
+      center.L = members.reduce(function (sum, member) { return sum + member.lab.L * member.weight; }, 0) / total;
+      center.a = members.reduce(function (sum, member) { return sum + member.lab.a * member.weight; }, 0) / total;
+      center.b = members.reduce(function (sum, member) { return sum + member.lab.b * member.weight; }, 0) / total;
+    });
+  }
+
+  const palette = centers.map(function (center, index) {
+    const members = points.filter(function (_point, pointIndex) { return assignments[pointIndex] === index; });
+    const weight = members.reduce(function (sum, member) { return sum + member.weight; }, 0);
+    const nearest = members.slice().sort(function (a, b) {
+      return squaredDistance(a.lab, center) - squaredDistance(b.lab, center);
+    })[0] || points[0];
+    return { hex: nearest.hex, lab: center, proportion: weight };
+  }).filter(function (entry) { return entry.proportion > 0; });
+  const total = palette.reduce(function (sum, entry) { return sum + entry.proportion; }, 0) || 1;
+  return palette.map(function (entry) {
+    return { hex: entry.hex, lab: entry.lab, proportion: entry.proportion / total };
+  }).sort(function (a, b) { return b.proportion - a.proportion; });
+}
+
+function optimalPaletteAssignment(firstPalette, secondPalette) {
+  const count = Math.min(firstPalette.length, secondPalette.length);
+  const costs = firstPalette.slice(0, count).map(function (first) {
+    return secondPalette.slice(0, count).map(function (second) {
+      return deltaE2000(first.lab, second.lab);
+    });
+  });
+  // With five colors, exact bitmask dynamic programming is compact and solves
+  // the same one-to-one assignment objective for which Westland et al. use the
+  // Hungarian algorithm.
+  const memo = new Map();
+  const solve = function (row, used) {
+    if (row === count) return { cost: 0, pairs: [] };
+    const key = row + ":" + used;
+    if (memo.has(key)) return memo.get(key);
+    let best = { cost: Infinity, pairs: [] };
+    for (let column = 0; column < count; column += 1) {
+      if (used & (1 << column)) continue;
+      const rest = solve(row + 1, used | (1 << column));
+      const cost = costs[row][column] + rest.cost;
+      if (cost < best.cost) {
+        best = { cost: cost, pairs: [[row, column]].concat(rest.pairs) };
+      }
+    }
+    memo.set(key, best);
+    return best;
+  };
+  return solve(0, 0);
+}
+
+function paletteComparison(first, second) {
+  const firstPalette = first.palette || [];
+  const secondPalette = second.palette || [];
+  if (!firstPalette.length || firstPalette.length !== secondPalette.length) {
+    return { score: null, distance: null, pairs: [] };
+  }
+  const assignment = optimalPaletteAssignment(firstPalette, secondPalette);
+  let totalWeight = 0;
+  let weightedDistance = 0;
+  const pairs = assignment.pairs.map(function (pair) {
+    const firstEntry = firstPalette[pair[0]];
+    const secondEntry = secondPalette[pair[1]];
+    const distance = deltaE2000(firstEntry.lab, secondEntry.lab);
+    const weight = (firstEntry.proportion + secondEntry.proportion) / 2;
+    totalWeight += weight;
+    weightedDistance += distance * weight;
+    return { first: firstEntry, second: secondEntry, distance: distance, weight: weight };
+  });
+  const distance = weightedDistance / (totalWeight || 1);
+  return {
+    score: Math.max(0, Math.min(100, Math.round(100 - distance))),
+    distance: distance,
+    pairs: pairs
+  };
+}
+
 function themeOptions(selected) {
   return Object.keys(THEME_MODES).map(function (id) {
     return '<option value="' + id + '"' + (id === selected ? " selected" : "") + ">" +
@@ -238,19 +432,31 @@ function aggregatePhotoSet(photos, mode) {
     shades[id].sort(function (a, b) { return b.weight - a.weight; });
   });
 
-  return { values: values, shades: shades, photos: photos, mode: mode || "representative" };
+  return {
+    values: values,
+    shades: shades,
+    photos: photos,
+    mode: mode || "representative",
+    palette: representativePalette(photos, mode || "representative", 5)
+  };
 }
 
 function aggregate(placeId, lens, mode) {
-  return aggregatePhotoSet(photosFor(placeId, lens), mode);
+  const result = aggregatePhotoSet(photosFor(placeId, lens), mode);
+  if (lens === "all" && (mode || "representative") === "representative") {
+    result.palette = placeById(placeId).recordedPalette.map(function (entry) {
+      return {
+        hex: entry.hex,
+        lab: hexToCielab(entry.hex),
+        proportion: Number(entry.proportion || 0)
+      };
+    });
+  }
+  return result;
 }
 
 function similarityScore(first, second) {
-  let distance = 0;
-  FAMILY_ORDER.forEach(function (id) {
-    distance += Math.abs(first.values[id] - second.values[id]);
-  });
-  return Math.max(0, Math.round((1 - distance / 2) * 100));
+  return paletteComparison(first, second).score;
 }
 
 function lensLabel(lens) {
@@ -318,7 +524,8 @@ function compareHook() {
   const secondPlace = placeById(secondPhoto.placeId);
   const firstAggregate = aggregatePhotoSet([firstPhoto], state.themeMode);
   const secondAggregate = aggregatePhotoSet([secondPhoto], state.themeMode);
-  const score = similarityScore(firstAggregate, secondAggregate);
+  const comparison = paletteComparison(firstAggregate, secondAggregate);
+  const score = comparison.score;
   const rows = comparisonRows(firstAggregate, secondAggregate);
   const largestGap = rows.slice().sort(function (a, b) { return b.gap - a.gap; })[0];
   const strongestShared = rows.slice().sort(function (a, b) {
@@ -345,7 +552,8 @@ function compareHook() {
           '<div class="hook-control-ends"><span>A only · ' + escapeHTML(firstPlace.name) + '</span><span>Drag to blend</span><span>B only · ' + escapeHTML(secondPlace.name) + '</span></div></div>' +
       '</div>' +
       '<aside class="hook-reading"><p class="eyebrow">Read the blend</p>' +
-        '<div class="hook-score"><strong>' + score + '</strong><span>palette similarity<br><small>fixed result from these two photographs</small></span></div>' +
+        '<div class="hook-score"><strong>' + score + '</strong><span>similarity index<br><small>weighted matched ΔE00 ' +
+          comparison.distance.toFixed(1) + ' · fixed for these photographs</small></span></div>' +
         '<div class="hook-evidence-pair"><article><i style="background:' +
           (strongestShared ? FAMILIES[strongestShared.id].color : "#777") + '"></i><span><small>Strongest shared family</small><strong>' +
           (strongestShared ? escapeHTML(FAMILIES[strongestShared.id].label) : "None") + '</strong></span></article>' +
@@ -366,8 +574,7 @@ function atlasView() {
     "Dataset overview · spatial evidence",
     "A geographic atlas of recorded color.",
     "Five photographic samples are positioned by latitude and longitude. Their placement shows where the records come from—not whether the places are culturally or chromatically similar."
-  ) + compareHook() +
-  '<section class="map-layout">' +
+  ) + '<section class="map-layout">' +
     '<div class="map-card geographic-map-card" tabindex="0" aria-label="Scrollable geographic atlas">' + chinaMapGraphic() + '</div>' +
     '<aside class="map-aside"><p class="eyebrow">Data boundary</p><h2>5 places, 50 photographs</h2>' +
       '<p>This is a selected photographic sample, not a national color census. Coordinates locate each place; individual photo coordinates are still incomplete.</p>' +
@@ -378,6 +585,7 @@ function atlasView() {
           '<span class="coordinates">' + place.coordinates[0].toFixed(3) + "°, " + place.coordinates[1].toFixed(3) + "°</span></button>";
       }).join("") +
       '</div><p class="map-source-note">Simplified outline: Natural Earth 1:110m. Point positions use the WGS84 place coordinates recorded in this prototype. The outline is for orientation, not an official boundary reference.</p></aside></section>' +
+    compareHook() +
     '<section class="view-bridge"><div><p class="eyebrow">Next question</p><h2>Geographic distance is not color similarity.</h2>' +
       '<p>Use Compare for matched evidence; its place-level view also contains the sample-based similarity network.</p></div>' +
       '<div class="button-row"><button class="primary-button" data-open-compare="places">Compare places</button>' +
@@ -538,7 +746,8 @@ function photoCompareView() {
   const first = aggregatePhotoSet([firstPhoto], state.themeMode);
   const second = aggregatePhotoSet([secondPhoto], state.themeMode);
   const rows = comparisonRows(first, second);
-  const score = similarityScore(first, second);
+  const comparison = paletteComparison(first, second);
+  const score = comparison.score;
   const gaps = rows.slice().sort(function (a, b) { return b.gap - a.gap; });
   const largestGap = gaps[0];
   const strongestShared = rows.slice().sort(function (a, b) {
@@ -592,7 +801,8 @@ function photoCompareView() {
     photoSelectionCard(firstPhoto, "A") + photoSelectionCard(secondPhoto, "B") +
   '</section>' +
   '<section class="photo-insights">' +
-    '<article><span class="insight-value">' + score + '</span><div><strong>Palette similarity</strong><small>Current two photographs only</small></div></article>' +
+    '<article><span class="insight-value">' + score + '</span><div><strong>Similarity index</strong><small>Weighted matched ΔE00 ' +
+      comparison.distance.toFixed(1) + ' · current photographs only</small></div></article>' +
     '<article><span class="family-chip" style="background:' + (largestGap ? FAMILIES[largestGap.id].color : "#777") + '"></span><div><strong>' +
       (largestGap ? escapeHTML(FAMILIES[largestGap.id].label) : "No difference") + '</strong><small>Largest difference' +
       (largestGap ? " · " + Math.round(largestGap.gap * 100) + " pp" : "") + '</small></div></article>' +
@@ -622,7 +832,8 @@ function placeCompareView() {
   const left = aggregate(leftPlace.id, state.compareLens, state.themeMode);
   const right = aggregate(rightPlace.id, state.compareLens, state.themeMode);
   const rows = comparisonRows(left, right);
-  const score = similarityScore(left, right);
+  const comparison = paletteComparison(left, right);
+  const score = comparison.score;
   const largestGap = rows.slice().sort(function (a, b) { return b.gap - a.gap; })[0];
   if (!state.compareFamily || !rows.some(function (row) { return row.id === state.compareFamily; })) {
     state.compareFamily = largestGap ? largestGap.id : null;
@@ -644,8 +855,9 @@ function placeCompareView() {
     '<div><p class="eyebrow">Current evidence lens</p><h2>' + escapeHTML(lensLabel(state.compareLens)) + '</h2>' +
       '<p>' + left.photos.length + ' photos from ' + escapeHTML(leftPlace.name) + ' and ' + right.photos.length +
       ' from ' + escapeHTML(rightPlace.name) + ' are included.</p></div>' +
-    '<div class="score-card"><span class="score-number">' + score + '</span><span>sample similarity / 100</span></div>' +
-    '<div class="summary-caution"><strong>Interpret carefully</strong><span>This score compares the current sampled color distributions. It does not measure cultural similarity.</span></div>' +
+    '<div class="score-card"><span class="score-number">' + score + '</span><span>similarity index / 100<br>matched ΔE00 ' +
+      (comparison.distance === null ? "N/A" : comparison.distance.toFixed(1)) + '</span></div>' +
+    '<div class="summary-caution"><strong>Interpret carefully</strong><span>The index is 100 minus the proportion-weighted matched ΔE00, clipped to 0–100. It describes this sample, not cultural similarity.</span></div>' +
   '</section>' +
   (left.photos.length && right.photos.length ? mirroredChart(rows, leftPlace, rightPlace, left, right) :
     '<section class="empty-state"><h2>No matched photographs</h2><p>One place has no photos under this lens. Choose another category or return to all photographs.</p></section>') +
@@ -763,7 +975,7 @@ function embeddedSimilarity(focusPlace) {
     '<h2>Similarity is one result inside comparison</h2></div><p>The selected Place A becomes the network focus. Position is relational, while edge labels encode sample similarity.</p></div>' +
     '<div class="network-layout"><div class="network-card">' + relationSvg(focusPlace, relationships) +
       '<p class="method-note">Current lens: ' + escapeHTML(lensLabel(state.compareLens)) + ' · ' +
-      escapeHTML(THEME_MODES[state.themeMode].label) + '. Edges do not imply cultural influence.</p></div>' +
+      escapeHTML(THEME_MODES[state.themeMode].label) + '. Edge labels show the disclosed ΔE00-based similarity index; they do not imply cultural influence.</p></div>' +
       '<aside class="rank-panel"><p class="eyebrow">Closest sampled palettes</p><h2>' + escapeHTML(focusPlace.name) + '</h2>' +
       '<ol class="rank-list">' + relationships.map(function (item, index) {
         return '<li><button data-sim-place="' + item.place.id + '"><span><b>' + (index + 1) + '</b><strong>' +
@@ -787,7 +999,7 @@ function similarityView() {
   return hero(
     "Relationship view",
     "Which sampled palettes are similar?",
-    "This network uses color-distribution similarity, not geography. Change the lens to compare equivalent photo contexts."
+    "This network uses a ΔE00-based palette similarity index, not geography. Change the lens to compare equivalent photo contexts."
   ) +
   '<section class="controls-panel compact">' +
     placeSelect("similarity-place", selected.id, "Focus place") +
@@ -801,7 +1013,7 @@ function similarityView() {
     ' Every edge is recalculated with this same transparent rule.</p></section>' +
   '<section class="network-layout"><div class="network-card">' +
     relationSvg(selected, relationships) +
-    '<p class="method-note">Node position is an editorial network layout. Edge labels encode similarity of the current sampled distributions; they do not imply cultural influence.</p>' +
+    '<p class="method-note">Node position is an editorial network layout. Edge labels equal 100 minus the weighted matched ΔE00, clipped to 0–100; they do not imply cultural influence.</p>' +
   '</div><aside class="rank-panel"><p class="eyebrow">Ranked relationships</p><h2>' + escapeHTML(selected.name) + '</h2>' +
     '<p>' + sourceCount + ' photos under “' + escapeHTML(lensLabel(state.simLens)) + '”.</p>' +
     '<ol class="rank-list">' + relationships.map(function (item, index) {
@@ -897,7 +1109,10 @@ function photoView() {
       escapeHTML(photo.photographer) + '</dd></div><div><dt>Categories</dt><dd>' + categories.map(function (item) {
         return escapeHTML(item.name);
       }).join(", ") + '</dd></div><div><dt>Coordinates</dt><dd>' +
-      (photo.coordinates ? escapeHTML(photo.coordinates.join(", ")) : "Not recorded") + '</dd></div></dl>' +
+      (photo.coordinates ? escapeHTML(photo.coordinates.join(", ")) : "Not recorded") + '</dd></div>' +
+      '<div><dt>Palette extraction</dt><dd>' + escapeHTML(photo.colorMetrics?.method || "Not recorded") +
+      ' · k=' + escapeHTML(photo.colorMetrics?.clusters || "?") + ' · ' +
+      escapeHTML(photo.colorMetrics?.colorSpace || "color space not recorded") + '</dd></div></dl>' +
       '<label class="control photo-theme-control"><span>Adobe-inspired theme</span><select id="theme-mode">' +
         themeOptions(state.themeMode) + '</select></label>' +
       '<div class="photo-theme-strip" aria-label="' + escapeHTML(THEME_MODES[state.themeMode].label) + ' five-color theme">' +
@@ -931,17 +1146,27 @@ function methodView() {
   '</section>' +
   '<section class="adobe-reference"><div><p class="eyebrow">Adobe-inspired, independently implemented</p>' +
     '<h2>Five swatches, six inspectable theme lenses</h2></div><div><p>Adobe Capture and Adobe Color inspired the five-color format and the Colorful, Bright, Dark, Deep, and Muted vocabulary. This prototype does not call an Adobe API or claim to reproduce Adobe’s proprietary extraction algorithm.</p>' +
-    '<p>Instead, it preserves each recorded five-color palette and uses disclosed OKLab lightness and chroma rules to reweight the same swatches. “Representative” leaves the original proportions unchanged.</p>' +
+    '<p>Instead, a repository script independently extracts five colors with deterministic CIELAB K-means. The optional theme lenses use disclosed OKLab lightness and chroma rules to reweight those same swatches; “Representative” leaves their extracted proportions unchanged.</p>' +
     '<p><a href="https://helpx.adobe.com/uk/indesign/desktop/apply-color/define-and-manage-color-assets/add-and-manage-colors-from-cc-libraries.html" target="_blank" rel="noopener noreferrer">Adobe Color Theme documentation ↗</a></p></div></section>' +
-  '<section class="pipeline"><p class="eyebrow">Transparent pipeline</p><h2>Photograph → five recorded swatches → theme lens → perceptual families → comparison</h2>' +
-    '<ol><li><strong>Source</strong><span>Selected photographs and available metadata</span></li>' +
-    '<li><strong>Recorded palette</strong><span>Five dominant colors and source proportions per photograph</span></li>' +
-    '<li><strong>Theme lens</strong><span>Disclosed OKLab lightness/chroma weighting; identical for both places</span></li>' +
-    '<li><strong>Grouping</strong><span>Fixed OKLab rules assign shades to 12 shared families</span></li>' +
-    '<li><strong>Aggregation</strong><span>Family weights are averaged across included photographs</span></li>' +
-    '<li><strong>Similarity</strong><span>100 × (1 − half the L1 distance between distributions)</span></li></ol></section>' +
+  '<section class="pipeline"><p class="eyebrow">Reproducible extraction and comparison</p><h2>Photograph → CIELAB K-means → ΔE00 matching → similarity index</h2>' +
+    '<ol><li><strong>Source image</strong><span>EXIF-corrected repository JPEG; SHA-256 recorded in the extraction manifest</span></li>' +
+    '<li><strong>Preprocessing</strong><span>Convert to sRGB and resize proportionally to at most 220 × 220 pixels</span></li>' +
+    '<li><strong>Extraction</strong><span>Convert pixels to CIELAB D65; deterministic K-means++ extracts k=5 clusters and pixel proportions</span></li>' +
+    '<li><strong>Displayed swatch</strong><span>Use the source-image pixel nearest each CIELAB centroid, avoiding invented out-of-gamut colors</span></li>' +
+    '<li><strong>Place summary</strong><span>Give each photograph equal total weight, then cluster its extracted swatches into five place-level colors</span></li>' +
+    '<li><strong>Matching</strong><span>An exact five-color assignment minimizes total CIEDE2000 difference—the same assignment objective as Hungarian matching</span></li>' +
+    '<li><strong>Result</strong><span>Weight matched ΔE00 by paired color proportions; display both distance and 100 − distance, clipped to 0–100</span></li></ol></section>' +
+  '<section class="adobe-reference"><div><p class="eyebrow">Research basis and implementation boundary</p>' +
+    '<h2>Paper-informed—not paper-equivalent</h2></div><div>' +
+    '<p>Celebi (2011) supports K-means as an effective color-quantization method when initialization is handled carefully. Westland et al. (2024) supports optimal binary palette matching and reports stronger agreement with visual judgments for CIEDE2000 than for simpler CIELAB distance in its tested datasets.</p>' +
+    '<p>This prototype adds proportion weighting, place-level aggregation, and a disclosed 0–100 display transform; those extensions have not yet been user-validated.</p>' +
+    '<p>Colorgorical supports the broader use of perceptually grounded color distance for visualization palette discriminability, but it generates categorical palettes and is not the extraction or matching algorithm used here.</p>' +
+    '<p><a href="https://doi.org/10.1016/j.imavis.2010.10.002" target="_blank" rel="noopener noreferrer">Celebi 2011 ↗</a> · ' +
+      '<a href="https://doi.org/10.1002/col.22927" target="_blank" rel="noopener noreferrer">Westland et al. 2024 ↗</a> · ' +
+      '<a href="https://doi.org/10.1109/TVCG.2016.2598918" target="_blank" rel="noopener noreferrer">Gramazio et al. 2017 ↗</a> · ' +
+      '<a href="https://doi.org/10.1002/col.20070" target="_blank" rel="noopener noreferrer">Sharma et al. 2005 ↗</a></p></div></section>' +
   '<section class="limitations"><div><p class="eyebrow">Known limitations</p><h2>What this prototype cannot establish</h2></div>' +
-    '<ul><li>The sample is small and unevenly documented.</li><li>The original full-pixel extraction script is not yet included; current theme lenses operate on the five stored swatches.</li>' +
+    '<ul><li>The sample is small and unevenly documented.</li><li>Five-color K-means compresses each image and can miss small but culturally meaningful accents or separate perceptually related shades.</li>' +
     '<li>Categories and several metadata fields remain provisional.</li>' +
     '<li>Camera settings, crop, light, season, restoration, tourism, and photographer choice affect color.</li>' +
     '<li>Similarity does not establish shared identity, influence, or representativeness.</li>' +

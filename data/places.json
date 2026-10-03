@@ -13,46 +13,46 @@
     "representativeImage": "images/jinxi/01.jpg",
     "recordedPalette": [
       {
-        "hex": "#1b201f",
-        "proportion": 0.2
+        "hex": "#262a28",
+        "proportion": 0.42945
       },
       {
-        "hex": "#373d3b",
-        "proportion": 0.194
+        "hex": "#f3f5f4",
+        "proportion": 0.220887
       },
       {
-        "hex": "#7f8683",
-        "proportion": 0.181
+        "hex": "#696a62",
+        "proportion": 0.217848
       },
       {
-        "hex": "#fafcfb",
-        "proportion": 0.155
+        "hex": "#bec2c2",
+        "proportion": 0.098457
       },
       {
-        "hex": "#56443e",
-        "proportion": 0.148
-      },
-      {
-        "hex": "#d5dddf",
-        "proportion": 0.122
+        "hex": "#682f29",
+        "proportion": 0.033358
       }
     ],
     "similarity": [
       {
-        "placeId": "hongkong",
-        "score": 56
-      },
-      {
-        "placeId": "genie",
-        "score": 52
-      },
-      {
         "placeId": "luoyang",
-        "score": 46
+        "score": 93,
+        "weightedDeltaE00": 6.7522
       },
       {
         "placeId": "bacheng",
-        "score": 40
+        "score": 90,
+        "weightedDeltaE00": 10.0065
+      },
+      {
+        "placeId": "genie",
+        "score": 87,
+        "weightedDeltaE00": 12.6228
+      },
+      {
+        "placeId": "hongkong",
+        "score": 83,
+        "weightedDeltaE00": 17.1495
       }
     ]
   },
@@ -70,46 +70,46 @@
     "representativeImage": "images/bacheng/01.jpg",
     "recordedPalette": [
       {
-        "hex": "#83837a",
-        "proportion": 0.243
+        "hex": "#bfc5d2",
+        "proportion": 0.440714
       },
       {
-        "hex": "#43463a",
-        "proportion": 0.232
+        "hex": "#848681",
+        "proportion": 0.310909
       },
       {
-        "hex": "#c0cfdf",
-        "proportion": 0.142
+        "hex": "#353b2f",
+        "proportion": 0.222102
       },
       {
-        "hex": "#b8b5b2",
-        "proportion": 0.134
+        "hex": "#fad4a9",
+        "proportion": 0.016603
       },
       {
-        "hex": "#e2ddd7",
-        "proportion": 0.126
-      },
-      {
-        "hex": "#9baab3",
-        "proportion": 0.123
+        "hex": "#b97a6b",
+        "proportion": 0.009672
       }
     ],
     "similarity": [
       {
+        "placeId": "jinxi",
+        "score": 90,
+        "weightedDeltaE00": 10.0065
+      },
+      {
         "placeId": "luoyang",
-        "score": 73
+        "score": 90,
+        "weightedDeltaE00": 10.2925
       },
       {
         "placeId": "genie",
-        "score": 53
-      },
-      {
-        "placeId": "jinxi",
-        "score": 40
+        "score": 83,
+        "weightedDeltaE00": 16.6168
       },
       {
         "placeId": "hongkong",
-        "score": 29
+        "score": 80,
+        "weightedDeltaE00": 19.9533
       }
     ]
   },
@@ -127,46 +127,46 @@
     "representativeImage": "images/hongkong/01.jpg",
     "recordedPalette": [
       {
-        "hex": "#110f0f",
-        "proportion": 0.27
+        "hex": "#181616",
+        "proportion": 0.351046
       },
       {
-        "hex": "#432d29",
-        "proportion": 0.203
+        "hex": "#aeadac",
+        "proportion": 0.234941
       },
       {
-        "hex": "#8c8c8a",
-        "proportion": 0.149
+        "hex": "#756b68",
+        "proportion": 0.209604
       },
       {
-        "hex": "#515252",
-        "proportion": 0.136
+        "hex": "#4a3c2e",
+        "proportion": 0.180399
       },
       {
-        "hex": "#7a675e",
-        "proportion": 0.131
-      },
-      {
-        "hex": "#b7b4b3",
-        "proportion": 0.111
+        "hex": "#263754",
+        "proportion": 0.02401
       }
     ],
     "similarity": [
       {
-        "placeId": "jinxi",
-        "score": 56
-      },
-      {
         "placeId": "genie",
-        "score": 49
+        "score": 86,
+        "weightedDeltaE00": 14.4138
       },
       {
-        "placeId": "bacheng",
-        "score": 29
+        "placeId": "jinxi",
+        "score": 83,
+        "weightedDeltaE00": 17.1495
       },
       {
         "placeId": "luoyang",
-        "score": 28
+        "score": 83,
+        "weightedDeltaE00": 16.9136
+      },
+      {
+        "placeId": "bacheng",
+        "score": 80,
+        "weightedDeltaE00": 19.9533
       }
     ]
   },
@@ -184,46 +184,46 @@
     "representativeImage": "images/genie/01.jpg",
     "recordedPalette": [
       {
-        "hex": "#575a4e",
-        "proportion": 0.257
+        "hex": "#727851",
+        "proportion": 0.360577
       },
       {
-        "hex": "#2f2c25",
-        "proportion": 0.241
+        "hex": "#505245",
+        "proportion": 0.20424
       },
       {
-        "hex": "#99a2a1",
-        "proportion": 0.144
+        "hex": "#9399ac",
+        "proportion": 0.19397
       },
       {
-        "hex": "#86866e",
-        "proportion": 0.136
+        "hex": "#ced7e0",
+        "proportion": 0.123814
       },
       {
-        "hex": "#bed0e1",
-        "proportion": 0.129
-      },
-      {
-        "hex": "#677b71",
-        "proportion": 0.093
+        "hex": "#1e1919",
+        "proportion": 0.117399
       }
     ],
     "similarity": [
       {
-        "placeId": "bacheng",
-        "score": 53
+        "placeId": "jinxi",
+        "score": 87,
+        "weightedDeltaE00": 12.6228
       },
       {
         "placeId": "luoyang",
-        "score": 53
-      },
-      {
-        "placeId": "jinxi",
-        "score": 52
+        "score": 87,
+        "weightedDeltaE00": 13.4337
       },
       {
         "placeId": "hongkong",
-        "score": 49
+        "score": 86,
+        "weightedDeltaE00": 14.4138
+      },
+      {
+        "placeId": "bacheng",
+        "score": 83,
+        "weightedDeltaE00": 16.6168
       }
     ]
   },
@@ -241,46 +241,46 @@
     "representativeImage": "images/luoyang/01.jpg",
     "recordedPalette": [
       {
-        "hex": "#766865",
-        "proportion": 0.238
+        "hex": "#767574",
+        "proportion": 0.320943
       },
       {
-        "hex": "#47474c",
-        "proportion": 0.214
+        "hex": "#9d9c98",
+        "proportion": 0.26854
       },
       {
-        "hex": "#828383",
-        "proportion": 0.163
+        "hex": "#dbe1e4",
+        "proportion": 0.201162
       },
       {
-        "hex": "#9b9087",
-        "proportion": 0.144
+        "hex": "#313234",
+        "proportion": 0.189212
       },
       {
-        "hex": "#d9dee1",
-        "proportion": 0.141
-      },
-      {
-        "hex": "#b2aea7",
-        "proportion": 0.1
+        "hex": "#bb4943",
+        "proportion": 0.020143
       }
     ],
     "similarity": [
       {
+        "placeId": "jinxi",
+        "score": 93,
+        "weightedDeltaE00": 6.7522
+      },
+      {
         "placeId": "bacheng",
-        "score": 73
+        "score": 90,
+        "weightedDeltaE00": 10.2925
       },
       {
         "placeId": "genie",
-        "score": 53
-      },
-      {
-        "placeId": "jinxi",
-        "score": 46
+        "score": 87,
+        "weightedDeltaE00": 13.4337
       },
       {
         "placeId": "hongkong",
-        "score": 28
+        "score": 83,
+        "weightedDeltaE00": 16.9136
       }
     ]
   }

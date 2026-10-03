@@ -1,0 +1,269 @@
+{
+  "methodVersion": "cielab-kmeans-v1",
+  "input": "Repository JPEG source photographs",
+  "inputColorAssumption": "JPEG RGB values are treated as sRGB; current files contain no embedded ICC profiles",
+  "pixelColorSpace": "CIELAB D65",
+  "clustering": "deterministic weighted K-means++",
+  "clustersPerPhoto": 5,
+  "resizeMaxPx": 220,
+  "maxSampledPixels": 30000,
+  "baseSeed": 301,
+  "maxIterations": 40,
+  "tolerance": 0.0001,
+  "displayColor": "Nearest source-image pixel to each CIELAB centroid",
+  "placeAggregation": "Equal photo contribution followed by weighted CIELAB K-means",
+  "comparison": "Optimal one-to-one CIEDE2000 matching, pair-proportion weighting",
+  "displayIndex": "max(0, min(100, round(100 - weightedDeltaE00)))",
+  "files": [
+    {
+      "id": "jinxi-01",
+      "path": "images/jinxi/01.jpg",
+      "sha256": "4459558ad8fbaa51a2823f0f921ab555e95e8879a509af27a091ae11a3433b66"
+    },
+    {
+      "id": "jinxi-02",
+      "path": "images/jinxi/02.jpg",
+      "sha256": "63903491babac979ffe6cdeb18be69072bc00986692667cb3bc4b18fc01292d9"
+    },
+    {
+      "id": "jinxi-03",
+      "path": "images/jinxi/03.jpg",
+      "sha256": "1c81f25976a5c9276f2b64ac5a98400fe9473dbe8780357d148be20bfdd0eb7b"
+    },
+    {
+      "id": "jinxi-04",
+      "path": "images/jinxi/04.jpg",
+      "sha256": "ee68840ce5bcf18a9d2523aa994011ccf96b361b6228eb4b4f08769c8aa128eb"
+    },
+    {
+      "id": "jinxi-05",
+      "path": "images/jinxi/05.jpg",
+      "sha256": "3373b99bb0d762a67b1e48cecbdedd15e4dbb1b02e10dd41be225731299199d9"
+    },
+    {
+      "id": "jinxi-06",
+      "path": "images/jinxi/06.jpg",
+      "sha256": "b4fb1c5ef339e801fab86b03a45738f3fa5d749ae23fcd9ca3a3a1935a0f27ca"
+    },
+    {
+      "id": "jinxi-07",
+      "path": "images/jinxi/07.jpg",
+      "sha256": "c17c468c9a423325b7818920752578893358818f7ffa1099c649e33db192a02b"
+    },
+    {
+      "id": "jinxi-08",
+      "path": "images/jinxi/08.jpg",
+      "sha256": "96731863be94bdd72665ed3f2449e1fea82e77503d2b772b3eb471fc0d518ba0"
+    },
+    {
+      "id": "jinxi-09",
+      "path": "images/jinxi/09.jpg",
+      "sha256": "7d58d8a46a3dc88180495c62307d8eb20054a5f0dc96b8c5bb54d24557d17c0e"
+    },
+    {
+      "id": "jinxi-10",
+      "path": "images/jinxi/10.jpg",
+      "sha256": "ef6b6c0e3f2f5c732b301e7e0cea3fbbeb809b39cec44ffddf1834b647d4d98f"
+    },
+    {
+      "id": "bacheng-01",
+      "path": "images/bacheng/01.jpg",
+      "sha256": "947c80614f88e276b5d306210add951d94dbf1fcc1f4ecae6b85bc70d1750bdb"
+    },
+    {
+      "id": "bacheng-02",
+      "path": "images/bacheng/02.jpg",
+      "sha256": "a5332c82868ab60fc6bb136abd8f605588887c54e2e30f53b49a88c4f0e4cb8e"
+    },
+    {
+      "id": "bacheng-03",
+      "path": "images/bacheng/03.jpg",
+      "sha256": "d204cf32b2bb973543f7d616cdc7dd9f6801d95ef76c7d99beb468e07abd3174"
+    },
+    {
+      "id": "bacheng-04",
+      "path": "images/bacheng/04.jpg",
+      "sha256": "00d7ec8f535a04eec5811e3d6670a1c141084545309028e3be76022b71806b7d"
+    },
+    {
+      "id": "bacheng-05",
+      "path": "images/bacheng/05.jpg",
+      "sha256": "a43688fd9e90f02006af5ed115a908f7651bf12d4ca50b2ae12ac1c2e0ad3940"
+    },
+    {
+      "id": "bacheng-06",
+      "path": "images/bacheng/06.jpg",
+      "sha256": "e91236cf90b208afeb549bc0bcab3e27bbe8b5fcaae9140fede01f53ab7920d3"
+    },
+    {
+      "id": "bacheng-07",
+      "path": "images/bacheng/07.jpg",
+      "sha256": "269bab18fccb02feb65c0b97456175dbe42e6b05ef216b34c7816123ece19129"
+    },
+    {
+      "id": "bacheng-08",
+      "path": "images/bacheng/08.jpg",
+      "sha256": "ce672217b5ef2c514bd024d2906b23893ad0c59098e382321edc37932fbbaf46"
+    },
+    {
+      "id": "bacheng-09",
+      "path": "images/bacheng/09.jpg",
+      "sha256": "d3b851649c5e42171c1f4c4a8bf9fe910038fcc8369978c457e35c8c135b67ee"
+    },
+    {
+      "id": "bacheng-10",
+      "path": "images/bacheng/10.jpg",
+      "sha256": "8c2d2e71af9b51296ca9cc8047851e645e257bdb4d0b1b63e76e42ed593d0611"
+    },
+    {
+      "id": "hongkong-01",
+      "path": "images/hongkong/01.jpg",
+      "sha256": "65655387ed9a1407798388dd7996e69b45321a45a07f1005c548579f567dfbea"
+    },
+    {
+      "id": "hongkong-02",
+      "path": "images/hongkong/02.jpg",
+      "sha256": "ff4c3205860c704c692c27fb310cf71e75b07e91a90b2d7db2d1a1d96460d41b"
+    },
+    {
+      "id": "hongkong-03",
+      "path": "images/hongkong/03.jpg",
+      "sha256": "097a4a94dcd322ca1e3aa9efd2d4671e367f61cef19cc323ac3b08d098254815"
+    },
+    {
+      "id": "hongkong-04",
+      "path": "images/hongkong/04.jpg",
+      "sha256": "5f84593416c73a98ecc5f125f68af3ac91e11d8f692e7c9a520206151fe4e681"
+    },
+    {
+      "id": "hongkong-05",
+      "path": "images/hongkong/05.jpg",
+      "sha256": "080325f3a450d3b32877a278d82d5b714f35f98ca2af957bc036238a572d1b5d"
+    },
+    {
+      "id": "hongkong-06",
+      "path": "images/hongkong/06.jpg",
+      "sha256": "264b70d5e3eed801f44c47d9d2853b318f518839d732ac5462e429b833b53790"
+    },
+    {
+      "id": "hongkong-07",
+      "path": "images/hongkong/07.jpg",
+      "sha256": "6c8438c6ae2696a9f6f4dbe66939471b4f50c630d4bcb8f1d72a3dc17697a32a"
+    },
+    {
+      "id": "hongkong-08",
+      "path": "images/hongkong/08.jpg",
+      "sha256": "645aa2eeb5933f70dda975fa7f85b4e094c2fcfdbccc50024f7025cb6bac0c85"
+    },
+    {
+      "id": "hongkong-09",
+      "path": "images/hongkong/09.jpg",
+      "sha256": "18515eaa07a622bc21f5c416c3bf836b2caf4cab1c7c8280c2d0685974ef4c63"
+    },
+    {
+      "id": "hongkong-10",
+      "path": "images/hongkong/10.jpg",
+      "sha256": "e98ccc1e33db1e0737818ba082f923ec5fb62e7fe2659cea573eca86e99b2da7"
+    },
+    {
+      "id": "genie-01",
+      "path": "images/genie/01.jpg",
+      "sha256": "542964dc9f8f503692933ade440d63cd1def81fb4a070b63f990d55e29952615"
+    },
+    {
+      "id": "genie-02",
+      "path": "images/genie/02.jpg",
+      "sha256": "bfb12dd149b8b2796b44b4706e436156416cf9ef26be5b256167d46fbfd83e2c"
+    },
+    {
+      "id": "genie-03",
+      "path": "images/genie/03.jpg",
+      "sha256": "c562b878ce5af826dc69e96180d0a6b9573265b9773bcddce55d83634c37ddd3"
+    },
+    {
+      "id": "genie-04",
+      "path": "images/genie/04.jpg",
+      "sha256": "5f59b8b4265894e760e0c63ed9d14c0d2ce2e3771f19cc9f10cccf4968fecc87"
+    },
+    {
+      "id": "genie-05",
+      "path": "images/genie/05.jpg",
+      "sha256": "94317fda9bd8c93f3f561f9a30d83c5ef28675d17653379001695c43cd12b5ee"
+    },
+    {
+      "id": "genie-06",
+      "path": "images/genie/06.jpg",
+      "sha256": "ebde15d958f7c937158b18a24df586dcef2b8e05fac83ebb34b8b7d26981fa2b"
+    },
+    {
+      "id": "genie-07",
+      "path": "images/genie/07.jpg",
+      "sha256": "924d830ef4abbcefa498e922704c51524da9b218f677e39fe8053d2fec141aa1"
+    },
+    {
+      "id": "genie-08",
+      "path": "images/genie/08.jpg",
+      "sha256": "ce5f312eff98824f4bd98eff01dfb2a98d5cd20e6315311b8bb3f2922c8f219a"
+    },
+    {
+      "id": "genie-09",
+      "path": "images/genie/09.jpg",
+      "sha256": "7fe213c0d007d7efb118129bec49cb270466ceb66f6e55c8d417d1eda258f981"
+    },
+    {
+      "id": "genie-10",
+      "path": "images/genie/10.jpg",
+      "sha256": "3b90961028e613d9a41509ea8dd8bb74988f81ee1841cc77e27f2846a23b52b5"
+    },
+    {
+      "id": "luoyang-01",
+      "path": "images/luoyang/01.jpg",
+      "sha256": "a2f79cb1b493c5fa1b1707387fb3075901a0d3720ae59d4b2aaaed89dd3938f0"
+    },
+    {
+      "id": "luoyang-02",
+      "path": "images/luoyang/02.jpg",
+      "sha256": "a8b5a64d81c2d56f5ea98a41bb57e7ef783068b7e1c358ad2b93d128faf04c7e"
+    },
+    {
+      "id": "luoyang-03",
+      "path": "images/luoyang/03.jpg",
+      "sha256": "c3c5ff7883f17e765d59e9a6f2d8dd8de620ff75a259e9d956c9cdab1e095c82"
+    },
+    {
+      "id": "luoyang-04",
+      "path": "images/luoyang/04.jpg",
+      "sha256": "1cfeb7bba70e696cb4ebf1e353daad59e4d44459c6a123211a1a16c42351d36a"
+    },
+    {
+      "id": "luoyang-05",
+      "path": "images/luoyang/05.jpg",
+      "sha256": "9eb9fef917f15732604a8e7985922836592cf5e19c783c906afbd986cd574c9f"
+    },
+    {
+      "id": "luoyang-06",
+      "path": "images/luoyang/06.jpg",
+      "sha256": "e93c49e2650cc33be2b5dee3f48cb9bf1a537a8f1da8d74dc7b3bdadb1bbc358"
+    },
+    {
+      "id": "luoyang-07",
+      "path": "images/luoyang/07.jpg",
+      "sha256": "09ff778d9ba27b0dcd1aeebc77c81bbd77391d65022a759e983cf959d558b4b0"
+    },
+    {
+      "id": "luoyang-08",
+      "path": "images/luoyang/08.jpg",
+      "sha256": "54fd664fb3bec3916eb6b6af3eebe39cca9b514cf5b8ca1dcaeb495493573ced"
+    },
+    {
+      "id": "luoyang-09",
+      "path": "images/luoyang/09.jpg",
+      "sha256": "3317640b750b6776d7673c22cc60ddf626f8f7fa2edb7bbbc602465d8d3ffacd"
+    },
+    {
+      "id": "luoyang-10",
+      "path": "images/luoyang/10.jpg",
+      "sha256": "b61518dc4d0a9dad5a43b1edd76cf7b51e768e69f2029255e59dec2df5c4b96f"
+    }
+  ]
+}
