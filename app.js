@@ -301,12 +301,58 @@ function placeSelect(id, selected, label) {
     }).join("") + "</select></label>";
 }
 
+function hookPalette(photo) {
+  return themedEntries(photo, state.themeMode).map(function (entry) {
+    return '<span style="background:' + entry.hex + ';flex:' + entry.proportion + '" title="' +
+      escapeHTML(entry.hex + " · " + Math.round(entry.proportion * 100) + "%") + '"></span>';
+  }).join("");
+}
+
+function compareHook() {
+  const firstPhoto = photoById(state.photoCompare[0]) || D.photos[0];
+  const secondPhoto = photoById(state.photoCompare[1]) || D.photos[1];
+  const firstPlace = placeById(firstPhoto.placeId);
+  const secondPlace = placeById(secondPhoto.placeId);
+  const firstAggregate = aggregatePhotoSet([firstPhoto], state.themeMode);
+  const secondAggregate = aggregatePhotoSet([secondPhoto], state.themeMode);
+  const score = similarityScore(firstAggregate, secondAggregate);
+  const sameCategory = firstPhoto.primaryCategory === secondPhoto.primaryCategory;
+  const categoryNote = sameCategory ? "Category matched" : "Different scene categories";
+
+  return '<section class="compare-hook" aria-labelledby="compare-hook-title">' +
+    '<div class="compare-hook-head"><div><p class="eyebrow">Interactive opening · drag to compare</p>' +
+      '<h2 id="compare-hook-title">Two photographs. One shared frame.</h2>' +
+      '<p>Move the divider to reveal two sampled records. The slider supports visual inspection; the palettes and score below provide the color evidence.</p></div>' +
+      '<button class="primary-button" data-open-compare="photos">Choose different photographs</button></div>' +
+    '<div class="compare-hook-grid">' +
+      '<div class="hook-compare-stage" id="hook-compare-stage" style="--hook-split:50%" role="group" aria-label="Interactive comparison of ' +
+        escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
+        '<div class="hook-image hook-image-b"><img src="' + secondPhoto.src + '" alt=""><span>B · ' + escapeHTML(secondPlace.name) + '</span></div>' +
+        '<div class="hook-image hook-image-a"><img src="' + firstPhoto.src + '" alt=""><span>A · ' + escapeHTML(firstPlace.name) + '</span></div>' +
+        '<div class="hook-divider" aria-hidden="true"><i>↔</i></div>' +
+        '<input id="hook-compare-split" class="hook-range" type="range" min="0" max="100" value="50" aria-label="Comparison split between ' +
+          escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
+      '</div>' +
+      '<aside class="hook-reading"><p class="eyebrow">What the reveal means</p>' +
+        '<div class="hook-score"><strong>' + score + '</strong><span>palette similarity<br><small>these two photographs only</small></span></div>' +
+        '<div class="hook-palette-record"><div><b>A</b><span><strong>' + escapeHTML(firstPlace.name) + '</strong><small>' +
+          escapeHTML(categoryById(firstPhoto.primaryCategory).name) + '</small></span></div><div class="hook-palette">' + hookPalette(firstPhoto) + '</div></div>' +
+        '<div class="hook-palette-record"><div><b>B</b><span><strong>' + escapeHTML(secondPlace.name) + '</strong><small>' +
+          escapeHTML(categoryById(secondPhoto.primaryCategory).name) + '</small></span></div><div class="hook-palette">' + hookPalette(secondPhoto) + '</div></div>' +
+        '<p class="hook-context"><strong>' + escapeHTML(categoryNote) + '.</strong> This is not a before/after view and does not establish cultural similarity.</p>' +
+        '<div class="hook-controls"><label for="hook-compare-split">Comparison split <output id="hook-split-output">50%</output></label>' +
+          '<button class="secondary-button compact" id="center-hook-divider" type="button">Center divider</button></div>' +
+      '</aside>' +
+    '</div>' +
+  '</section>';
+}
+
 function atlasView() {
   return hero(
     "Dataset overview · spatial evidence",
     "A geographic atlas of recorded color.",
     "Five photographic samples are positioned by latitude and longitude. Their placement shows where the records come from—not whether the places are culturally or chromatically similar."
-  ) +
+  ) + compareHook() +
   '<section class="map-layout">' +
     '<div class="map-card geographic-map-card" tabindex="0" aria-label="Scrollable geographic atlas">' + chinaMapGraphic() + '</div>' +
     '<aside class="map-aside"><p class="eyebrow">Data boundary</p><h2>5 places, 50 photographs</h2>' +
@@ -1028,6 +1074,10 @@ function bind() {
   const themeMode = document.getElementById("theme-mode");
   const swap = document.getElementById("swap-places");
   const resetPhotoCompare = document.getElementById("reset-photo-compare");
+  const hookSplit = document.getElementById("hook-compare-split");
+  const hookStage = document.getElementById("hook-compare-stage");
+  const hookOutput = document.getElementById("hook-split-output");
+  const centerHookDivider = document.getElementById("center-hook-divider");
   if (compareA) compareA.addEventListener("change", function () { state.compare[0] = compareA.value; state.compareFamily = null; render({ preserveScroll: true }); });
   if (compareB) compareB.addEventListener("change", function () { state.compare[1] = compareB.value; state.compareFamily = null; render({ preserveScroll: true }); });
   if (compareLens) compareLens.addEventListener("change", function () { state.compareLens = compareLens.value; state.compareFamily = null; render({ preserveScroll: true }); });
@@ -1046,6 +1096,21 @@ function bind() {
     state.compareFamily = null;
     render({ preserveScroll: true });
   });
+  if (hookSplit && hookStage) {
+    hookSplit.addEventListener("input", function () {
+      const value = hookSplit.value + "%";
+      hookStage.style.setProperty("--hook-split", value);
+      if (hookOutput) hookOutput.value = value;
+    });
+  }
+  if (centerHookDivider && hookSplit && hookStage) {
+    centerHookDivider.addEventListener("click", function () {
+      hookSplit.value = "50";
+      hookStage.style.setProperty("--hook-split", "50%");
+      if (hookOutput) hookOutput.value = "50%";
+      hookSplit.focus();
+    });
+  }
   if (swap) swap.addEventListener("click", function () { state.compare.reverse(); state.compareFamily = null; render({ preserveScroll: true }); });
 }
 
