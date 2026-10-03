@@ -6,7 +6,7 @@ Live site: <https://charleston1107.github.io/suzhou-in-color/>
 
 ## What changed in this redesign
 
-- **Homepage chromatic blend:** adapts the interaction idea from [Aceternity Compare](https://ui.aceternity.com/components/compare) into a task-specific A/B blend. The slider crossfades the two selected source photographs and simultaneously reweights a combined palette, while fixed evidence cards identify the strongest shared family and largest distribution difference. Keyboard control is available through the native range input.
+- **Homepage chromatic blend:** adapts the interaction idea from [Aceternity Compare](https://ui.aceternity.com/components/compare) into a task-specific A/B blend. A prominent slider below the image crossfades the two selected source photographs and simultaneously reweights a combined palette, while fixed evidence cards identify the strongest shared family and largest distribution difference. Keyboard control is available through the native range input.
 - **Native geographic atlas:** replaces third-party map tiles with an editorial SVG outline of China and positions all five place nodes from the latitude and longitude stored in data.js.
 - **Editorial visual system:** uses a dark grid, high-contrast serif headings, compact uppercase labels, fine borders, and restrained palette accents.
 - **Unified Compare workspace:** replaces separate Compare and Similarity navigation with two explicit tasks.

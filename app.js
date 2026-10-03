@@ -333,11 +333,16 @@ function compareHook() {
       '<p>Adjust the contribution of A and B. The image blend supports atmospheric inspection, while the weighted palette and color-family evidence identify what is shared and different.</p></div>' +
       '<button class="primary-button" data-open-compare="photos">Choose different photographs</button></div>' +
     '<div class="compare-hook-grid">' +
-      '<div class="hook-compare-stage" id="hook-compare-stage" role="img" aria-label="A fifty-fifty visual blend of ' +
-        escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
-        '<div class="hook-image hook-image-b"><img src="' + secondPhoto.src + '" alt=""><span>B · ' + escapeHTML(secondPlace.name) + '</span></div>' +
-        '<div class="hook-image hook-image-a" id="hook-image-a"><img src="' + firstPhoto.src + '" alt=""><span>A · ' + escapeHTML(firstPlace.name) + '</span></div>' +
-        '<div class="hook-blend-mark" aria-hidden="true"><span>A</span><i>+</i><span>B</span></div>' +
+      '<div class="hook-visual-column"><div class="hook-compare-stage" id="hook-compare-stage" role="img" aria-label="A fifty-fifty visual blend of ' +
+          escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
+          '<div class="hook-image hook-image-b"><img src="' + secondPhoto.src + '" alt=""><span>B · ' + escapeHTML(secondPlace.name) + '</span></div>' +
+          '<div class="hook-image hook-image-a" id="hook-image-a"><img src="' + firstPhoto.src + '" alt=""><span>A · ' + escapeHTML(firstPlace.name) + '</span></div>' +
+        '</div>' +
+        '<div class="hook-controls"><div class="hook-control-head"><label for="hook-compare-split">Blend contribution</label>' +
+          '<output id="hook-split-output">A 50% · B 50%</output><button class="secondary-button compact" id="center-hook-divider" type="button">Equal blend</button></div>' +
+          '<input id="hook-compare-split" class="hook-visible-range" type="range" min="0" max="100" value="50" aria-label="Blend contribution: ' +
+            escapeHTML(firstPlace.name + " to " + secondPlace.name) + '">' +
+          '<div class="hook-control-ends"><span>A only · ' + escapeHTML(firstPlace.name) + '</span><span>Drag to blend</span><span>B only · ' + escapeHTML(secondPlace.name) + '</span></div></div>' +
       '</div>' +
       '<aside class="hook-reading"><p class="eyebrow">Read the blend</p>' +
         '<div class="hook-score"><strong>' + score + '</strong><span>palette similarity<br><small>fixed result from these two photographs</small></span></div>' +
@@ -350,11 +355,6 @@ function compareHook() {
           '<div class="hook-blended-palette" aria-label="Weighted combination of both recorded palettes">' +
             hookBlendPalette(firstPhoto, "a") + hookBlendPalette(secondPhoto, "b") + '</div>' +
           '<div class="hook-source-key"><span><i class="source-a"></i>A · ' + escapeHTML(firstPlace.name) + '</span><span><i class="source-b"></i>B · ' + escapeHTML(secondPlace.name) + '</span></div></div>' +
-        '<div class="hook-controls"><label for="hook-compare-split">Image and palette contribution <output id="hook-split-output">A 50% · B 50%</output></label>' +
-          '<input id="hook-compare-split" class="hook-visible-range" type="range" min="0" max="100" value="50" aria-label="Blend contribution: ' +
-            escapeHTML(firstPlace.name + " to " + secondPlace.name) + '">' +
-          '<div class="hook-control-ends"><span>A only</span><span>Equal blend</span><span>B only</span></div>' +
-          '<button class="secondary-button compact" id="center-hook-divider" type="button">Reset to equal blend</button></div>' +
         '<p class="hook-context"><strong>' + escapeHTML(categoryNote) + '.</strong> The blend is an exploratory overlay, not a shared place, before/after image, or claim of cultural connection.</p>' +
       '</aside>' +
     '</div>' +
