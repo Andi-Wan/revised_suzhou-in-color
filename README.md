@@ -6,7 +6,7 @@ Live site: <https://charleston1107.github.io/suzhou-in-color/>
 
 ## What changed in this redesign
 
-- **Homepage comparison reveal:** adds an [Aceternity Compare](https://ui.aceternity.com/components/compare)-inspired draggable A/B image reveal as the opening hook. It uses the two currently selected source photographs, shows their five-swatch palettes and sample-only similarity score, supports arrow-key control through a native range input, and links to the full photograph library.
+- **Homepage chromatic blend:** adapts the interaction idea from [Aceternity Compare](https://ui.aceternity.com/components/compare) into a task-specific A/B blend. The slider crossfades the two selected source photographs and simultaneously reweights a combined palette, while fixed evidence cards identify the strongest shared family and largest distribution difference. Keyboard control is available through the native range input.
 - **Native geographic atlas:** replaces third-party map tiles with an editorial SVG outline of China and positions all five place nodes from the latitude and longitude stored in data.js.
 - **Editorial visual system:** uses a dark grid, high-contrast serif headings, compact uppercase labels, fine borders, and restrained palette accents.
 - **Unified Compare workspace:** replaces separate Compare and Similarity navigation with two explicit tasks.
@@ -83,5 +83,5 @@ The geographic view is rendered locally as SVG and does not require Leaflet or m
 - The original full-image extraction script is not yet included, so the stored five-color palettes cannot yet be independently regenerated.
 - Category-matched comparison reduces one confound but does not make the sample representative.
 - Community review, permission checks, and fuller provenance remain necessary before public cultural claims.
-- The homepage slider is a visual inspection aid, not a before/after claim; the paired photographs may differ in scene category, weather, framing, and capture conditions.
+- The homepage blend is a visual inspection aid, not a synthesized place or before/after claim; the paired photographs may differ in scene category, weather, framing, and capture conditions. Its slider changes only the exploratory overlay and weighted palette—not the underlying similarity score.
 - The simplified outline is for orientation and should not be reused as an official administrative-boundary map.

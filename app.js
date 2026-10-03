@@ -301,10 +301,13 @@ function placeSelect(id, selected, label) {
     }).join("") + "</select></label>";
 }
 
-function hookPalette(photo) {
+function hookBlendPalette(photo, source) {
   return themedEntries(photo, state.themeMode).map(function (entry) {
-    return '<span style="background:' + entry.hex + ';flex:' + entry.proportion + '" title="' +
-      escapeHTML(entry.hex + " · " + Math.round(entry.proportion * 100) + "%") + '"></span>';
+    return '<span class="hook-blend-swatch source-' + source + '" data-hook-source="' + source +
+      '" data-hook-weight="' + entry.proportion + '" style="background:' + entry.hex +
+      ';flex-grow:' + (entry.proportion * 0.5) + '" title="' +
+      escapeHTML((source === "a" ? "A · " : "B · ") + entry.hex + " · source weight " +
+        Math.round(entry.proportion * 100) + "%") + '"></span>';
   }).join("");
 }
 
@@ -316,32 +319,43 @@ function compareHook() {
   const firstAggregate = aggregatePhotoSet([firstPhoto], state.themeMode);
   const secondAggregate = aggregatePhotoSet([secondPhoto], state.themeMode);
   const score = similarityScore(firstAggregate, secondAggregate);
+  const rows = comparisonRows(firstAggregate, secondAggregate);
+  const largestGap = rows.slice().sort(function (a, b) { return b.gap - a.gap; })[0];
+  const strongestShared = rows.slice().sort(function (a, b) {
+    return Math.min(b.a, b.b) - Math.min(a.a, a.b);
+  })[0];
   const sameCategory = firstPhoto.primaryCategory === secondPhoto.primaryCategory;
   const categoryNote = sameCategory ? "Category matched" : "Different scene categories";
 
   return '<section class="compare-hook" aria-labelledby="compare-hook-title">' +
-    '<div class="compare-hook-head"><div><p class="eyebrow">Interactive opening · drag to compare</p>' +
-      '<h2 id="compare-hook-title">Two photographs. One shared frame.</h2>' +
-      '<p>Move the divider to reveal two sampled records. The slider supports visual inspection; the palettes and score below provide the color evidence.</p></div>' +
+    '<div class="compare-hook-head"><div><p class="eyebrow">Interactive opening · chromatic blend</p>' +
+      '<h2 id="compare-hook-title">Blend two records. Trace what remains distinct.</h2>' +
+      '<p>Adjust the contribution of A and B. The image blend supports atmospheric inspection, while the weighted palette and color-family evidence identify what is shared and different.</p></div>' +
       '<button class="primary-button" data-open-compare="photos">Choose different photographs</button></div>' +
     '<div class="compare-hook-grid">' +
-      '<div class="hook-compare-stage" id="hook-compare-stage" style="--hook-split:50%" role="group" aria-label="Interactive comparison of ' +
+      '<div class="hook-compare-stage" id="hook-compare-stage" role="img" aria-label="A fifty-fifty visual blend of ' +
         escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
         '<div class="hook-image hook-image-b"><img src="' + secondPhoto.src + '" alt=""><span>B · ' + escapeHTML(secondPlace.name) + '</span></div>' +
-        '<div class="hook-image hook-image-a"><img src="' + firstPhoto.src + '" alt=""><span>A · ' + escapeHTML(firstPlace.name) + '</span></div>' +
-        '<div class="hook-divider" aria-hidden="true"><i>↔</i></div>' +
-        '<input id="hook-compare-split" class="hook-range" type="range" min="0" max="100" value="50" aria-label="Comparison split between ' +
-          escapeHTML(firstPlace.name + " and " + secondPlace.name) + '">' +
+        '<div class="hook-image hook-image-a" id="hook-image-a"><img src="' + firstPhoto.src + '" alt=""><span>A · ' + escapeHTML(firstPlace.name) + '</span></div>' +
+        '<div class="hook-blend-mark" aria-hidden="true"><span>A</span><i>+</i><span>B</span></div>' +
       '</div>' +
-      '<aside class="hook-reading"><p class="eyebrow">What the reveal means</p>' +
-        '<div class="hook-score"><strong>' + score + '</strong><span>palette similarity<br><small>these two photographs only</small></span></div>' +
-        '<div class="hook-palette-record"><div><b>A</b><span><strong>' + escapeHTML(firstPlace.name) + '</strong><small>' +
-          escapeHTML(categoryById(firstPhoto.primaryCategory).name) + '</small></span></div><div class="hook-palette">' + hookPalette(firstPhoto) + '</div></div>' +
-        '<div class="hook-palette-record"><div><b>B</b><span><strong>' + escapeHTML(secondPlace.name) + '</strong><small>' +
-          escapeHTML(categoryById(secondPhoto.primaryCategory).name) + '</small></span></div><div class="hook-palette">' + hookPalette(secondPhoto) + '</div></div>' +
-        '<p class="hook-context"><strong>' + escapeHTML(categoryNote) + '.</strong> This is not a before/after view and does not establish cultural similarity.</p>' +
-        '<div class="hook-controls"><label for="hook-compare-split">Comparison split <output id="hook-split-output">50%</output></label>' +
-          '<button class="secondary-button compact" id="center-hook-divider" type="button">Center divider</button></div>' +
+      '<aside class="hook-reading"><p class="eyebrow">Read the blend</p>' +
+        '<div class="hook-score"><strong>' + score + '</strong><span>palette similarity<br><small>fixed result from these two photographs</small></span></div>' +
+        '<div class="hook-evidence-pair"><article><i style="background:' +
+          (strongestShared ? FAMILIES[strongestShared.id].color : "#777") + '"></i><span><small>Strongest shared family</small><strong>' +
+          (strongestShared ? escapeHTML(FAMILIES[strongestShared.id].label) : "None") + '</strong></span></article>' +
+          '<article><i style="background:' + (largestGap ? FAMILIES[largestGap.id].color : "#777") + '"></i><span><small>Largest difference</small><strong>' +
+          (largestGap ? escapeHTML(FAMILIES[largestGap.id].label + " · " + Math.round(largestGap.gap * 100) + " pp") : "None") + '</strong></span></article></div>' +
+        '<div class="hook-blend-palette-block"><div><strong>Weighted blend palette</strong><small id="hook-blend-label">A 50% · B 50%</small></div>' +
+          '<div class="hook-blended-palette" aria-label="Weighted combination of both recorded palettes">' +
+            hookBlendPalette(firstPhoto, "a") + hookBlendPalette(secondPhoto, "b") + '</div>' +
+          '<div class="hook-source-key"><span><i class="source-a"></i>A · ' + escapeHTML(firstPlace.name) + '</span><span><i class="source-b"></i>B · ' + escapeHTML(secondPlace.name) + '</span></div></div>' +
+        '<div class="hook-controls"><label for="hook-compare-split">Image and palette contribution <output id="hook-split-output">A 50% · B 50%</output></label>' +
+          '<input id="hook-compare-split" class="hook-visible-range" type="range" min="0" max="100" value="50" aria-label="Blend contribution: ' +
+            escapeHTML(firstPlace.name + " to " + secondPlace.name) + '">' +
+          '<div class="hook-control-ends"><span>A only</span><span>Equal blend</span><span>B only</span></div>' +
+          '<button class="secondary-button compact" id="center-hook-divider" type="button">Reset to equal blend</button></div>' +
+        '<p class="hook-context"><strong>' + escapeHTML(categoryNote) + '.</strong> The blend is an exploratory overlay, not a shared place, before/after image, or claim of cultural connection.</p>' +
       '</aside>' +
     '</div>' +
   '</section>';
@@ -1076,7 +1090,9 @@ function bind() {
   const resetPhotoCompare = document.getElementById("reset-photo-compare");
   const hookSplit = document.getElementById("hook-compare-split");
   const hookStage = document.getElementById("hook-compare-stage");
+  const hookImageA = document.getElementById("hook-image-a");
   const hookOutput = document.getElementById("hook-split-output");
+  const hookBlendLabel = document.getElementById("hook-blend-label");
   const centerHookDivider = document.getElementById("center-hook-divider");
   if (compareA) compareA.addEventListener("change", function () { state.compare[0] = compareA.value; state.compareFamily = null; render({ preserveScroll: true }); });
   if (compareB) compareB.addEventListener("change", function () { state.compare[1] = compareB.value; state.compareFamily = null; render({ preserveScroll: true }); });
@@ -1097,17 +1113,31 @@ function bind() {
     render({ preserveScroll: true });
   });
   if (hookSplit && hookStage) {
-    hookSplit.addEventListener("input", function () {
-      const value = hookSplit.value + "%";
-      hookStage.style.setProperty("--hook-split", value);
-      if (hookOutput) hookOutput.value = value;
-    });
+    const updateHookBlend = function () {
+      const bWeight = Number(hookSplit.value) / 100;
+      const aWeight = 1 - bWeight;
+      if (hookImageA) hookImageA.style.opacity = String(aWeight);
+      const label = "A " + Math.round(aWeight * 100) + "% · B " + Math.round(bWeight * 100) + "%";
+      if (hookOutput) hookOutput.value = label;
+      if (hookBlendLabel) hookBlendLabel.textContent = label;
+      document.querySelectorAll("[data-hook-source]").forEach(function (swatch) {
+        const contribution = swatch.dataset.hookSource === "a" ? aWeight : bWeight;
+        swatch.style.flexGrow = String(Number(swatch.dataset.hookWeight) * contribution);
+      });
+      hookStage.setAttribute("aria-label", label + " visual blend of the selected photographs");
+    };
+    hookSplit.addEventListener("input", updateHookBlend);
   }
   if (centerHookDivider && hookSplit && hookStage) {
     centerHookDivider.addEventListener("click", function () {
       hookSplit.value = "50";
-      hookStage.style.setProperty("--hook-split", "50%");
-      if (hookOutput) hookOutput.value = "50%";
+      if (hookImageA) hookImageA.style.opacity = ".5";
+      if (hookOutput) hookOutput.value = "A 50% · B 50%";
+      if (hookBlendLabel) hookBlendLabel.textContent = "A 50% · B 50%";
+      document.querySelectorAll("[data-hook-source]").forEach(function (swatch) {
+        swatch.style.flexGrow = String(Number(swatch.dataset.hookWeight) * 0.5);
+      });
+      hookStage.setAttribute("aria-label", "A 50% · B 50% visual blend of the selected photographs");
       hookSplit.focus();
     });
   }
